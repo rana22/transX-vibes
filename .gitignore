@@ -24,6 +24,12 @@
 /dist/
 /nbdist/
 /.nb-gradle/
+app/build/*
+app/build/**
+web/dist/
+web/node_modules/
+web/node_modules/*
+web/node_modules/**
 vibes-app/build/tmp/expandedArchives/org.jacoco.agent-0.8.1.jar_8059ed6e1ab8b88aac5d9097fad847bb/org/jacoco/agent/AgentJar.class
 vibes-app/build/tmp/expandedArchives/org.jacoco.agent-0.8.1.jar_8059ed6e1ab8b88aac5d9097fad847bb/jacocoagent.jar
 vibes-app/build/tmp/expandedArchives/org.jacoco.agent-0.8.1.jar_8059ed6e1ab8b88aac5d9097fad847bb/about.html
