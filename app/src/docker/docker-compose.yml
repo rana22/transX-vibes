@@ -1,0 +1,26 @@
+version: '3'
+
+services: 
+  docker-psql:
+    image: postgres:latest
+    environment:
+      - POSTGRES_HOST=docker-psql
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+      - POSTGRES_DB=postgres  
+      - POSTGRES_DB_PORT=5432
+    ports:
+      - 5432:5432
+
+  vibe-app:
+    image: enterprise/vibes:0.0.1-SNAPSHOT
+    depends_on:
+      - docker-psql
+    ports:
+      - 9090:9090
+    environment:
+      - POSTGRES_HOST=docker-psql
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+      - POSTGRES_DB=postgres  
+      - POSTGRES_DB_PORT=5432

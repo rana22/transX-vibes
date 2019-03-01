@@ -1,7 +1,12 @@
+# FROM java:8
+# VOLUME /tmp
+# COPY vibes-0.0.1-SNAPSHOT.jar app.jar
+# RUN bash -c 'touch /app.jar'
+# ENTRYPOINT ["java","-Djava.security.egd=file:/dev/./urandom","-jar","/app.jar"]
+
 FROM java:8
-VOLUME /tmp
-COPY vibes-0.0.1-SNAPSHOT.jar app.jar
-RUN bash -c 'touch /app.jar'
-ENTRYPOINT ["java","-Djava.security.egd=file:/dev/./urandom","-jar","/app.jar"]
+WORKDIR /app
+COPY vibes-0.0.1-SNAPSHOT.jar /app/spring-boot-app.jar
+ENTRYPOINT ["java","-jar","spring-boot-app.jar"]
 
 
