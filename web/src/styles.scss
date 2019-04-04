@@ -4,6 +4,11 @@
 @import '~bootstrap-scss/bootstrap-reboot';
 $fa-font-path: "~font-awesome/fonts";
 @import "~font-awesome/scss/font-awesome";
-@import "./assets/styles/music-profile.scss";
+// @import "./assets/styles/music-profile.scss";
+@import "./assets/styles/theme.scss";
+@import "~@angular/material/prebuilt-themes/deeppurple-amber.css";
 
 
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
