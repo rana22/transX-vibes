@@ -19,8 +19,8 @@
 
           <div fxFlex>
             <div class="form-button-group" fxLayout="row" fxLayoutWrap fxLayoutAlign="space-between center">
-              <button fxFlex.xs="95%" fxFlex="30%" [disabled]="!loginForm.form.valid" md-raised-button  (click)="login()" type="submit" color="primary">LOGIN</button>
-              <a fxFlex.xs="95%" fxFlex="30%" href routerLink="forgot-password">Forgot Password?</a>
+              <button mat-raised-button fxFlex.xs="95%" fxFlex="30%" [disabled]="false"  (click)="login()" type="submit" color="primary">LOGIN</button>
+              <a mat-button fxFlex.xs="95%" fxFlex="30%" href routerLink="forgot-password">Forgot Password?</a>
             </div>
           </div>
 
