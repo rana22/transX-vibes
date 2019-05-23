@@ -17,8 +17,7 @@ Install Postgres
 Http Post call 
 URL:```http://localhost:3000/app/v1/users/add/person```
 
-body:
-```{
+body: ```{
     "name": "tested123"
 }```
 
