@@ -53,3 +53,6 @@ vibes-app/build/jacoco/test.exec
 vibes-app/build/classes/java/test/com/transx/vibes/VibesApplicationTests.class
 vibes-app/build/classes/java/main/com/transx/vibes/VibesApplication.class
 app/bin/main/com/transx/vibes/VibesApplication.class
+node-app/package-lock.json
+node-app/build/
+node-app/node_modules/
