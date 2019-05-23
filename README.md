@@ -12,7 +12,7 @@ Follows design Pattern (kind of like java)
 
 2.``` npm run start```
 
-3. Install Postgres
+Install Postgres
 
 Test 
 url ```http://localhost:3000/app/v1/users/add/person```
