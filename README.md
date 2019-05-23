@@ -21,4 +21,12 @@ body ```{
     "name": "tested123"
 }```
 
+### web (angular-cli)
+1.```npm install ```
+
+2.``` ng serve```
+
+### app (Dockerized Spring boot project)
+Probably going to be removed from project in future
+
 
