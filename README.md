@@ -14,10 +14,11 @@ Follows design Pattern (kind of like java)
 
 Install Postgres
 
-Test 
-url ```http://localhost:3000/app/v1/users/add/person```
+Http Post call 
+URL:```http://localhost:3000/app/v1/users/add/person```
 
-body ```{
+body:
+```{
     "name": "tested123"
 }```
 
