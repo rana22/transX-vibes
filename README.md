@@ -8,9 +8,7 @@ postgres DB (configuration on dbconfig.ts file)
 
 Follows design Pattern (kind of like java)
 
-To download dependency 
-```npm install ```
+1.```npm install ```
 
-to start app
-``` npm run start```
+2.``` npm run start```
 
