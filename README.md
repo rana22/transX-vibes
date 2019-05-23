@@ -1,7 +1,7 @@
 # transX-vibes
 musical hub/jam seession for amatures
 
-### vibe-app
+### vibe-app (Node JS)
 Uses Inversify, Sequelize and Express JS 
 
 postgres DB (configuration on dbconfig.ts file)
