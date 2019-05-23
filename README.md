@@ -10,7 +10,7 @@ Follows design Pattern (kind of like java)
 
 1.```npm install ```
 
-2.``` npm run start```
+2.```npm run start```
 
 Install Postgres
 
