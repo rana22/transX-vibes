@@ -18,7 +18,7 @@ export class PersonController implements IPersonController {
     @httpPost("/add/person")
     public create(@request() req: e.Request,
         @response() res: e.Response): Promise<Person> {
-        let person = req.body.name;
+        let person = req.body;
         return this._service.create(person);
     }
 
