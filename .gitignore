@@ -56,3 +56,9 @@ app/bin/main/com/transx/vibes/VibesApplication.class
 node-app/package-lock.json
 node-app/build/
 node-app/node_modules/
+vibe-app/node_modules/
+vibe-ui/node_modules/
+vibe-ui/dist/
+vibe-app/build/
+*.map
+*.css
