@@ -2,6 +2,7 @@ import IUserService = require("./IUserService");
 import { User } from "../model/User";
 import IBaseService = require("./base/IBaseService");
 import { injectable, inject } from "inversify";
+import md5 = require("md5");
 
 @injectable()
 class UserService implements IUserService{
@@ -77,9 +78,22 @@ class UserService implements IUserService{
 
     findByUsernamePassword(_username: string, _password: string) : Promise<User>{
         return new Promise<User>((resolve, reject) => {
-
+            User.findOne({where:{
+                username : _username,
+                password : _password
+            }}).then((results) => {
+                if(results) {
+                    resolve(results);
+                }else {
+                    reject();
+                }
+            })
+            .catch((error) => {
+                reject(error);
+            });
         });
     }
+    
     findByEmail(_email: string) : Promise<User>{
         return new Promise<User>((resolve, reject) => {
 
@@ -88,6 +102,22 @@ class UserService implements IUserService{
     findByResetToken(_resetPasswordToken: string) : Promise<User>{
         return new Promise<User>((resolve, reject) => {
 
+        });
+    }
+
+    public authenticateUser(_username: string, _password: string) : Promise<User> {
+        return new Promise<User>((resolve, reject) => {
+            this.findByUsernamePassword(_username, md5(_password))
+                .then((results) => {
+                    if(results) {
+                        resolve(results);
+                    }else {
+                        reject();
+                    }
+                })
+                .catch((error) => {
+                    reject(error);
+                });
         });
     }
 

@@ -58,7 +58,8 @@ export class User extends Model<User>{
 
     @Column({ 
         type: DataType.STRING, 
-        allowNull: true 
+        allowNull: true,
+        
     })
     resetPasswordExpires?: string;
 
@@ -68,7 +69,6 @@ export class User extends Model<User>{
     })
     createdAt?: string;
 
-    
     @Column({ 
         type: DataType.DATE, 
         allowNull: true 

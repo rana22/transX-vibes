@@ -5,4 +5,16 @@ CREATE TABLE document (
     PRIMARY KEY (id)
 );
 
-DELETE FROM document;
+DELETE FROM document;SELECT id, type, adminAccess FROM roles;
+ALTER TABLE role_permissions DROP COLUMN createdAt
+ALTER TABLE role_permissions ADD COLUMN createdat TIMESTAMP DEFAULT NOW()
+DROP TABLE role_permissions
+
+ALTER TABLE users DROP COLUMN firstName
+ALTER TABLE users ADD COLUMN lastname varchar
+
+ALTER TABLE users DROP COLUMN updatedat
+
+DELETE FROM permissions;
+
+DROP TABLE Movies

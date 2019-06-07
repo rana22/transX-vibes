@@ -19,11 +19,16 @@
     "inversify-express-utils": "^6.3.2",
     "inversify-inject-decorators": "^3.1.0",
     "jade": "~1.11.0",
+    "md5": "^2.2.1",
     "morgan": "~1.9.1",
+    "oauth2orize": "^1.11.0",
     "passport": "^0.4.0",
+    "passport-http": "^0.3.0",
+    "passport-http-bearer": "^1.0.1",
     "pg": "^7.11.0",
     "reflect-metadata": "^0.1.13",
     "sequelize": "^5.8.6",
-    "sequelize-typescript": "^1.0.0-beta.3"
+    "sequelize-typescript": "^1.0.0-beta.3",
+    "uuid": "^3.3.2"
   }
 }
