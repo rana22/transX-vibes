@@ -19,7 +19,7 @@ class AuthUtil{
     @inject(TYPES.IUserService) private _userService: IUserService;
 
     init(){ 
-        Passport.use(new Bearer.Strategy((token,done) => {
+        Passport.use(new Bearer.Strategy((token, done) => {
             this._authService.findOne({
                 where: {
                     token: token

@@ -36,3 +36,9 @@ const TYPES = {
 };
 
 export default TYPES;
+
+export const MIDDLEWARE = {
+    IsAdmin: Symbol.for("IsAdmin"),
+    IsAuthenticated: Symbol.for("IsAuthenticated"),
+    Log: Symbol.for("Log")
+};

@@ -1,36 +1,51 @@
 import { Component, OnInit } from '@angular/core';
+import { OktaAuthService } from '@okta/okta-angular';
+import * as OktaSignIn from '@okta/okta-signin-widget';
+import { Router, NavigationStart } from '@angular/router';
 
 @Component({
   selector: 'app-login',
-  templateUrl: './login.component.html'
-  // styleUrls: ['']
+  templateUrl: './login.component.html',
+  styleUrls: ['./login.component.scss']
 })
 export class LoginComponent implements OnInit {
-
   model: any = {};
+  title = 'client';
+  isAuthenticated: boolean;
 
-  constructor(
-    // private route: ActivatedRoute,
-    // private router: Router,
-    // private authenticationService: AuthService,
-    // private userDAO: UserDAO
-    ) { }
+  widget = new OktaSignIn({
+    baseUrl: 'https://{{okta-domain}}.com'
+  });
 
-  ngOnInit() {
+  constructor(public oktaAuth: OktaAuthService, route: Router) {
+
+    route.events.forEach(event => {
+      if (event instanceof NavigationStart) {
+        switch(event.url) {
+          case '/login':
+          case '/calculator':
+            break;
+          default:
+            this.widget.remove();
+            break;
+        }
+      }
+    })
   }
 
-  // login() {
-  //   this.router.navigate(['portal']);
-  //   console.log(this.model);
-  //   this.authenticationService.login(this.model.username, this.model.password)
-  //     .subscribe(
-  //       data => {
-  //         console.log(data);
-  //         this.router.navigate(['portal']);
-  //       },
-  //       error => {
-  //         this.router.navigate(['portal']);
-  //         console.log("login failed");
-  //       });
-  // }
+  ngOnInit() {
+    this.widget.renderEl({
+      el: '#okta-signin-container'},
+      (res) => {
+        if (res.status === 'SUCCESS') {
+          this.oktaAuth.loginRedirect('/', { sessionToken: res.session.token });
+          // Hide the widget
+          this.widget.hide();
+        }
+      },
+      (err) => {
+        throw err;
+      }
+    );
+  }
 }

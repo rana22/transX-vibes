@@ -1,6 +1,5 @@
-<mat-card class="login-card">
-
-  
+<div id="okta-signin-container"></div>
+<!-- <mat-card class="login-card">
   <mat-card-title>
     Login
   </mat-card-title>
@@ -24,9 +23,32 @@
             </div>
           </div>
 
+          <span layout="row"><hr flex/></span>
+
+          <div fxFlex>
+            <button color="primary" mat-raised-button fxFlex="100%" fxFlex.gt-sm="100%"
+                    (click)="oktaAuth.loginRedirect()">LOGIN with OKTA
+            </button>
+          </div>
         </div>
       </div>
     </div>
   </form>
-</mat-card>
+</mat-card> -->
+
+<!-- <mat-toolbar color="primary">
+  <span>Welcome to {{title}}!</span>
+  <span class="toolbar-spacer"></span>
+  <button mat-raised-button color="accent" *ngIf="isAuthenticated"
+          (click)="oktaAuth.logout()">Logout
+  </button>
+</mat-toolbar> -->
+
+<!-- <mat-card *ngIf="!isAuthenticated">
+  <mat-card-content>
+    <button mat-raised-button color="accent"
+            (click)="oktaAuth.loginRedirect()">Login
+    </button>
+  </mat-card-content>
+</mat-card> -->
 

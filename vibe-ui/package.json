@@ -4,6 +4,7 @@
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
+    "serve": "ng serve --env=local --port 4300",
     "build": "ng build",
     "test": "ng test",
     "lint": "ng lint",
@@ -37,6 +38,8 @@
     "@angular/cli": "~7.2.2",
     "@angular/compiler-cli": "~7.2.12",
     "@angular/language-service": "~7.2.12",
+    "@okta/okta-angular": "^1.2.1",
+    "@okta/okta-signin-widget": "^2.14.0",
     "@types/jasmine": "~2.8.8",
     "@types/jasminewd2": "~2.0.3",
     "@types/node": "~8.9.4",
@@ -50,6 +53,7 @@
     "karma-jasmine": "~1.1.2",
     "karma-jasmine-html-reporter": "^0.2.2",
     "protractor": "~5.4.0",
+    "rxjs-compat": "^6.3.3",
     "ts-node": "~7.0.0",
     "tslint": "~5.11.0",
     "typescript": "~3.2.2"

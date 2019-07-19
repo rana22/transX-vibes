@@ -1,13 +1,13 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import '@angular/material';
 import 'hammerjs';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { HeaderModule } from './header/header.module';
+import { NavigateModule } from './home/navigate/navigation.module';
 import { ContentModule } from './content/content.module';
 import { RouterModule } from '@angular/router';
 import { LoginModule } from './login/login.module';
@@ -15,8 +15,16 @@ import { ApiHelper } from './core/service/api.helper.service';
 import { CoreModule } from './core/core.module';
 import { MaterialModule } from './material.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import {NgBusyModule} from 'ng-busy';
-import {FlexLayoutModule} from '@angular/flex-layout';
+import { NgBusyModule } from 'ng-busy';
+import { FlexLayoutModule } from '@angular/flex-layout';
+import { OKTA_CONFIG, OktaAuthModule, OktaCallbackComponent } from '@okta/okta-angular';
+import { AuthInterceptor } from './shared/auth/auth.interceptor';
+
+const oktaConfig = {
+  issuer: 'https://{{domain}}.com/oauth2/default',
+  clientId: '{{id}}',
+  redirectUri: 'http://localhost:4200/login'
+}
 
 @NgModule({
   declarations: [
@@ -24,7 +32,7 @@ import {FlexLayoutModule} from '@angular/flex-layout';
   ],
   imports: [
     BrowserModule,
-    HeaderModule,
+    NavigateModule,
     ContentModule,
     AppRoutingModule,
     RouterModule,
@@ -35,9 +43,14 @@ import {FlexLayoutModule} from '@angular/flex-layout';
     MaterialModule,
     BrowserAnimationsModule,
     NgBusyModule,
-    FlexLayoutModule
+    FlexLayoutModule,
+    OktaAuthModule
   ],
-  providers: [ ApiHelper ],
+  providers: [
+    ApiHelper,
+    { provide: OKTA_CONFIG, useValue: oktaConfig },
+    {provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true}
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -1,18 +1,3 @@
-// Use mat-color to extract individual colors from a palette as necessary.
-.login-card {
-    top: 50px;
-    background-color: mat-color($tdk-app-accent, 800);
-    border-color: mat-color($tdk-app-primary);
-    max-width: 500px;
-    margin: 25px auto;
-  }
-  
-  a {
-    color: mat-color($tdk-app-primary, 400);
-    text-decoration: none;
-    outline: none;
-  }
-  .fields-container> *{
-    width: 100%;
-  }
-  
+#okta-signin-container{
+  margin-top: 7%
+}

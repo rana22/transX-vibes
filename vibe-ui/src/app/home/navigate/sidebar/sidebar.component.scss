@@ -1,0 +1,42 @@
+.navbar{
+    .collapse{
+        .container{
+            .navbar-nav{
+                li{
+                    a{
+                        font-size: 28px;
+                    }
+                }
+            }
+        }
+    }
+}
+
+mat-toolbar, mat-sidenav{
+    background: #007bbf;
+}
+
+h3.mat-subheader{
+    background: #ffffff !important;
+}
+
+span.mat-button-wrapper{
+    &:hover{
+        columns: #f7f7f7f5;
+    }
+}
+a.mat-button{
+    color: #f7f7f7f5;
+}
+#home-btn{
+    a{
+        &:hover{
+            color: #f7f7f7f5;
+        }
+    }
+}
+
+a.mat-list-item-content{
+    padding-right: 0;
+    padding-left: 0;
+}

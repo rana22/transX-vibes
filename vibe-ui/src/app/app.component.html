@@ -1,5 +1,6 @@
 <mat-sidenav-container>
-        <mat-sidenav #sidenav mode="over" class="app-sidenav">
+        <vibe-sidebar></vibe-sidebar>
+        <!-- <mat-sidenav #sidenav mode="over" class="app-sidenav">
                 <mat-list (click)="sidenav.toggle()">
 
                         <mat-list-item>
@@ -32,7 +33,7 @@
                   
                       </mat-list>
         </mat-sidenav>
-        <mat-toolbar scroll color="primary">
+        <mat-toolbar scroll color="accent">
 
                 <i style="cursor: pointer" class="material-icons app-toolbar-menu" (click)="sidenav.toggle()">menu</i>
             
@@ -44,7 +45,7 @@
             
                 <i *ngIf="isLoggedIn" style="cursor: pointer" class="material-icons home" routerLink="portal">home</i>
             
-        </mat-toolbar>
+        </mat-toolbar> -->
             
         <mat-sidenav-container>
             <router-outlet></router-outlet>

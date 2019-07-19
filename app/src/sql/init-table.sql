@@ -15,6 +15,10 @@ ALTER TABLE users ADD COLUMN lastname varchar
 
 ALTER TABLE users DROP COLUMN updatedat
 
-DELETE FROM permissions;
+DELETE FROM users;
 
-DROP TABLE Movies
+DELETE FROM roles;
+
+DROP TABLE Users;
+
+select * from Person

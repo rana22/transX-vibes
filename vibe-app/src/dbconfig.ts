@@ -41,7 +41,6 @@ class Setup {
           .replace(/\s+/g, ' '); // excess white space
       return sql;
   }
-
 }
 
 Setup.executeSqlSeeds([

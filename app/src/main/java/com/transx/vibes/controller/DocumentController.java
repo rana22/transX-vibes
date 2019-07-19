@@ -43,7 +43,7 @@ public class DocumentController{
 		try{
 			docRepo.save(document);
 		}catch(Exception e){
-		log.error("error while inserting data {}", e.getMessage());
+			log.error("error while inserting data {}", e.getMessage());
 		}
 
 		return ResponseEntity.ok(document);

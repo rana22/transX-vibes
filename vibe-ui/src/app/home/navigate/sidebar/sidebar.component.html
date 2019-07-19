@@ -1,0 +1,46 @@
+<mat-sidenav #sidenav mode="over" class="app-sidenav">
+  <mat-list (click)="sidenav.toggle()">
+
+          <mat-list-item id="home-btn">
+            <a mat-button><mat-icon>home</mat-icon>Home</a>
+          </mat-list-item>
+    
+          <h3 mat-subheader>Home</h3>
+    
+          <mat-list-item>
+            <a mat-button routerLink="/login">Job Sites</a>
+          </mat-list-item>
+    
+          <mat-list-item>
+            <a mat-button routerLink="/login">Profile</a>
+          </mat-list-item>
+    
+          <h3 mat-subheader>Admin</h3>
+    
+          <mat-list-item >
+            <a mat-button routerLink="/login">Roles</a>
+          </mat-list-item>
+    
+          <mat-list-item >
+            <a mat-button routerLink="/login">Users</a>
+          </mat-list-item>
+    
+          <mat-list-item>
+            <a mat-button ><mat-icon>exit_to_app</mat-icon>Logout</a>
+          </mat-list-item>
+    
+        </mat-list>
+</mat-sidenav>
+<mat-toolbar scroll>
+
+  <i style="cursor: pointer" class="material-icons app-toolbar-menu" (click)="sidenav.toggle()">menu</i>
+
+  <span class="toolbar-space-between"></span>
+
+  <i style="cursor: pointer" class="material-icons keyboard_arrow_left" >keyboard_arrow_left</i>
+
+  <span class="toolbar-space-between"></span>
+
+  <i *ngIf="isLoggedIn" style="cursor: pointer" class="material-icons home" routerLink="portal">home</i>
+
+</mat-toolbar>
