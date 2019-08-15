@@ -21,8 +21,8 @@ import { OKTA_CONFIG, OktaAuthModule, OktaCallbackComponent } from '@okta/okta-a
 import { AuthInterceptor } from './shared/auth/auth.interceptor';
 
 const oktaConfig = {
-  issuer: 'https://119481-dev.okta.com/oauth2/default',
-  clientId: '0oay1rew1KVkXZSi7356',
+  issuer: '',
+  clientId: '',
   redirectUri: 'http://localhost:4200/login'
 }
 
