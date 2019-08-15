@@ -1,6 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import '@angular/material';
 import 'hammerjs';
@@ -21,8 +21,8 @@ import { OKTA_CONFIG, OktaAuthModule, OktaCallbackComponent } from '@okta/okta-a
 import { AuthInterceptor } from './shared/auth/auth.interceptor';
 
 const oktaConfig = {
-  issuer: 'https://{{domain}}.com/oauth2/default',
-  clientId: '{{id}}',
+  issuer: 'https://119481-dev.okta.com/oauth2/default',
+  clientId: '0oay1rew1KVkXZSi7356',
   redirectUri: 'http://localhost:4200/login'
 }
 
@@ -38,6 +38,7 @@ const oktaConfig = {
     RouterModule,
     LoginModule,
     FormsModule,
+    ReactiveFormsModule,
     HttpClientModule,
     CoreModule,
     MaterialModule,

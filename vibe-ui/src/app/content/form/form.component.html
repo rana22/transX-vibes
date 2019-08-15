@@ -1,0 +1,39 @@
+<div id="form" class="container">
+  <form #myform="ngForm">
+    <div class="col-lg-12">
+      <h3>Item information</h3>
+    </div>
+    <br><br>
+    <div class="form-group" >
+      <h4>Add an item</h4>
+      <div class="radio radio-primary">
+        <input type="radio" name="addItem" [value]="true" #addItem="ngModel" [(ngModel)]="addItems"> <label for="addItem">Yes " ========"      </label> 
+        <input type="radio" name="addItem" [value]="false" #addItem="ngModel" [(ngModel)]="addItems"> <label for="addItem">No</label>
+
+      </div>
+      <div ngModelGroup="itemGroup" #itemGroup="ngModelGroup">
+          <div *ngIf="addItems">
+              <div  *ngFor="let item of items; let i = index">
+                <input #itemStatus="ngModel" type="checkbox" name="select-{{i}}" [required]="!checkAtleastOneItemSlected()" [value]="true" [(ngModel)]="item.isAdded"> <label>{{item.name}}</label>
+                
+                <div *ngIf="item.isAdded">
+                    <select>
+                        <option value="null" [selected]="item.priority === null">Select</option>
+                        <option value="1" [selected]="item.priority === 1">1</option>  
+                        <option value="2" [selected]="item.priority === 2">2</option>  
+                        <option value="3" [selected]="item.priority === 3">3</option>       
+                      </select>
+                </div>
+                
+              </div>
+            </div>
+            <div class="error-msg">
+              <div class="required-err-msg" *ngIf="!checkAtleastOneItemSlected() && itemGroup.touched && addItems"> This field is required </div>
+            </div>
+      </div>
+      
+    </div>
+
+
+  </form>
+</div>
