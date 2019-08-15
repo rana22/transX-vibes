@@ -16,6 +16,8 @@ export class ApiHelper {
   private resources: Map<string, string> = new Map();
   private busySource = new Subject<any>();
   private apiErrorSource = new Subject<any>();
+  private clientId : string;
+  private authUrl : string;
 
   busyChange$ = this.busySource.asObservable();
   apiErrorChange$ = this.apiErrorSource.asObservable();
@@ -197,6 +199,19 @@ export class ApiHelper {
   public setApiError(apiError) {
     console.log(apiError);
     this.apiErrorSource.next(apiError);
+  }
+
+  public setOktaParam(url : string, id : string){
+    this.authUrl = url;
+    this.clientId = id;
+  }
+
+  public getOktaUrl(){
+    return this.authUrl;
+  }
+
+  public getOktaId(){
+    return this.clientId;
   }
 
 }

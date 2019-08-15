@@ -1,5 +1,14 @@
 <mat-sidenav-container>
-        <vibe-sidebar></vibe-sidebar>
+  <div layout="column">
+      <div flex id="navigation-bar">
+          <vibe-sidebar></vibe-sidebar>
+      </div>
+      <div flex id="container">
+          <router-outlet></router-outlet>
+      </div>
+
+  </div>
+        
         <!-- <mat-sidenav #sidenav mode="over" class="app-sidenav">
                 <mat-list (click)="sidenav.toggle()">
 
@@ -47,8 +56,5 @@
             
         </mat-toolbar> -->
             
-        <mat-sidenav-container>
-            <router-outlet></router-outlet>
-        </mat-sidenav-container>
 </mat-sidenav-container>
 <div [ngBusy]="{busy: busy, message: 'Loading...', minDuration: 600}"></div>

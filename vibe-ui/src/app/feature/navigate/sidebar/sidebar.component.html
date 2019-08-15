@@ -26,12 +26,12 @@
           </mat-list-item>
     
           <mat-list-item>
-            <a mat-button ><mat-icon>exit_to_app</mat-icon>Logout</a>
+            <a mat-button (click)="logout()"><mat-icon>exit_to_app</mat-icon>Logout</a>
           </mat-list-item>
     
         </mat-list>
 </mat-sidenav>
-<mat-toolbar scroll>
+<mat-toolbar scroll layout-xs="column">
 
   <i style="cursor: pointer" class="material-icons app-toolbar-menu" (click)="sidenav.toggle()">menu</i>
 

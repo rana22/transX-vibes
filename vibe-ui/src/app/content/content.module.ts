@@ -7,18 +7,23 @@ import { GalleryComponent } from './gallery/gallery.component';
 import { DownloadComponent } from './download/download.component';
 import { ContentRoutingModule } from './content.routing.module';
 import { RouterModule } from '@angular/router';
+import { MatCardModule } from '@angular/material';
+import { SharedModule } from '../shared/shared.module';
+
 
 @NgModule({
   declarations: [ContentComponent, 
                   HomeComponent, 
                   AboutComponent, 
                   GalleryComponent, 
-                  DownloadComponent,
+                  DownloadComponent
                 ],
   imports: [
     CommonModule,
     ContentRoutingModule,
-    RouterModule
+    RouterModule,
+    MatCardModule,
+    SharedModule
   ],
   exports: [ContentComponent, 
             HomeComponent, 

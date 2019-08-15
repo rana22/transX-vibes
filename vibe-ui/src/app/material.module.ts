@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
-import {MatCardModule} from '@angular/material/card';
-import {MatSidenavModule} from '@angular/material/sidenav';
-import {MatListModule} from '@angular/material/list';
+import { MatCardModule } from '@angular/material/card';
+import { MatSidenavModule } from '@angular/material/sidenav';
+import { MatListModule } from '@angular/material/list';
 
 import {
   MatButtonModule,
@@ -10,7 +10,7 @@ import {
   MatIconModule,
   MatCheckboxModule,
   MatFormFieldModule,
-  MatInputModule
+  MatInputModule,
 } from '@angular/material';
 
 @NgModule({

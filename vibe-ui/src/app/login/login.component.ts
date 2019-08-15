@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { OktaAuthService } from '@okta/okta-angular';
 import * as OktaSignIn from '@okta/okta-signin-widget';
 import { Router, NavigationStart } from '@angular/router';
+import { ApiHelper } from '../core/service/services';
 
 @Component({
   selector: 'app-login',
@@ -14,10 +15,12 @@ export class LoginComponent implements OnInit {
   isAuthenticated: boolean;
 
   widget = new OktaSignIn({
-    baseUrl: 'https://{{okta-domain}}.com'
+    baseUrl: '/api'
   });
 
-  constructor(public oktaAuth: OktaAuthService, route: Router) {
+  constructor(private apiHelper:ApiHelper,
+               public oktaAuth: OktaAuthService, 
+               route: Router) {
 
     route.events.forEach(event => {
       if (event instanceof NavigationStart) {
@@ -34,16 +37,20 @@ export class LoginComponent implements OnInit {
   }
 
   ngOnInit() {
+    var authSvc = this;
     this.widget.renderEl({
       el: '#okta-signin-container'},
       (res) => {
+        alert(JSON.stringify(res))
         if (res.status === 'SUCCESS') {
-          this.oktaAuth.loginRedirect('/', { sessionToken: res.session.token });
-          // Hide the widget
+          authSvc.apiHelper.setAccessToken(res.session.token);
+          // var createdUser = authSvc.userDAO.createFromServer(user) as any;
+          this.oktaAuth.loginRedirect('/home', { sessionToken: res.session.token });
           this.widget.hide();
         }
       },
       (err) => {
+        console.warn(err);
         throw err;
       }
     );

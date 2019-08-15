@@ -7,7 +7,7 @@ import 'hammerjs';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { NavigateModule } from './home/navigate/navigation.module';
+import { NavigateModule } from './feature/navigate/navigation.module';
 import { ContentModule } from './content/content.module';
 import { RouterModule } from '@angular/router';
 import { LoginModule } from './login/login.module';
@@ -19,11 +19,13 @@ import { NgBusyModule } from 'ng-busy';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { OKTA_CONFIG, OktaAuthModule, OktaCallbackComponent } from '@okta/okta-angular';
 import { AuthInterceptor } from './shared/auth/auth.interceptor';
+import { environment } from 'src/environments/environment';
+import { SharedModule } from './shared/shared.module';
 
 const oktaConfig = {
-  issuer: 'https://{{domain}}.com/oauth2/default',
-  clientId: '{{id}}',
-  redirectUri: 'http://localhost:4200/login'
+  issuer: environment.okta.url,
+  clientId: environment.okta.clientId,
+  redirectUri: 'http://localhost:4200/'
 }
 
 @NgModule({
@@ -44,7 +46,8 @@ const oktaConfig = {
     BrowserAnimationsModule,
     NgBusyModule,
     FlexLayoutModule,
-    OktaAuthModule
+    OktaAuthModule,
+    SharedModule
   ],
   providers: [
     ApiHelper,

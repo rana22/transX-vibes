@@ -4,7 +4,11 @@
 
 export const environment = {
   production: false,
-  envName : 'local'
+  envName : 'local',
+  okta:{
+    url: 'https://dev-119481.okta.com/oauth2/default',
+    clientId : '0oay1rew1KVkXZSi7356'
+  }
 };
 
 /*

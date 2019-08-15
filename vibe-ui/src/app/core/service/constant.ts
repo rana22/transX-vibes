@@ -21,4 +21,9 @@ export class Constant {
         ACTIVE: "active",
         INACTIVE: "inactive"
       };
+
+      public static okta = {
+        URL : environment.okta.url,
+        id : environment.okta.clientId
+      }
 }
