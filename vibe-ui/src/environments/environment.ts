@@ -6,7 +6,8 @@ export const environment = {
   production: false,
   envName : 'local',
   okta:{
-    
+    url: "okta-url",
+    clientId : "client-id"
   }
 };
 
