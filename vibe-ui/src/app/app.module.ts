@@ -26,6 +26,7 @@ const oktaConfig = {
   issuer: environment.okta.url,
   clientId: environment.okta.clientId,
   redirectUri: 'http://localhost:4200/'
+
 }
 
 @NgModule({
