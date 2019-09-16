@@ -7,8 +7,11 @@ import { OktaCallbackComponent, OktaLoginRedirectComponent } from '@okta/okta-an
 const routes: Routes = [
   {path: 'login', component: LoginComponent},
   {path: 'home', loadChildren: './content/content.module#ContentModule'},
-  {path: 'implicit/callback', component: OktaCallbackComponent }
+  {path: 'implicit/callback', component: OktaCallbackComponent },
   // {path: 'login', component: OktaLoginRedirectComponent }
+  {path: '', loadChildren: './content/content.module#ContentModule'},
+  {path: 'implicit/callback', component: OktaCallbackComponent },
+  {path: 'login', component: OktaLoginRedirectComponent }
 ];
 
 @NgModule({

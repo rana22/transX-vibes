@@ -7,9 +7,8 @@ import { GalleryComponent } from './gallery/gallery.component';
 import { DownloadComponent } from './download/download.component';
 import { ContentRoutingModule } from './content.routing.module';
 import { RouterModule } from '@angular/router';
-import { MatCardModule } from '@angular/material';
 import { SharedModule } from '../shared/shared.module';
-
+import { FormModule } from '../shared/form/form.module';
 
 @NgModule({
   declarations: [ContentComponent, 
@@ -22,8 +21,8 @@ import { SharedModule } from '../shared/shared.module';
     CommonModule,
     ContentRoutingModule,
     RouterModule,
-    MatCardModule,
-    SharedModule
+    SharedModule,
+    FormModule
   ],
   exports: [ContentComponent, 
             HomeComponent, 

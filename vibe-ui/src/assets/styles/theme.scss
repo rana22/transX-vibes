@@ -101,7 +101,7 @@ $mat-accent: (
   )
 );
 
-$tdk-app-primary: mat-palette($mat-primary);
+$tdk-app-primary: mat-palette($mat-blue);
 $tdk-app-accent:  mat-palette($mat-accent);
 
 // The warn palette is optional (defaults to red).
@@ -333,5 +333,6 @@ md-select {
 // @import "app/portal/admin/users/form/user-form.component.scss";//TODO: LOOK INTO SCALABLE IMPORT STRATEGY
 @import "../../app/shared/portalLinkTile/portalLinkTile.component.scss";
 @import "../../app/content/home/home.component.scss";
+@import "../../app/shared/form/form.component.scss";
 // @import "app/portal/job-sites/job-site";
 // @import "../node_modules/angular2-busy/build/style/busy.css";

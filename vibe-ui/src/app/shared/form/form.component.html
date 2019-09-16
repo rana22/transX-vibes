@@ -1,0 +1,19 @@
+<mat-card class="form-card">
+
+  <mat-card-title class="text-center" id="form-title">
+    Upload Product Images
+  </mat-card-title>
+
+  <form #uploadForm="ngForm" id="form-content">
+    <div class="form-items" *ngFor="let field of fields">
+        <mat-form-field appearance="outline">
+            <mat-label >{{field.key}} </mat-label>
+            <input matInput type="field.value">
+        </mat-form-field>
+    </div>
+      
+  </form>
+  
+  
+
+</mat-card>
