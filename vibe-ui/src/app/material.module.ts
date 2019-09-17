@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { MatCardModule } from '@angular/material/card';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatListModule } from '@angular/material/list';
+import { MatMomentDateModule } from "@angular/material-moment-adapter";
 
 import {
   MatButtonModule,
@@ -12,6 +13,10 @@ import {
   MatFormFieldModule,
   MatInputModule,
   MatSelectModule,
+  MatOptionModule,
+  MatRadioModule,
+  MatDatepickerModule,
+  MatNativeDateModule
 } from '@angular/material';
 
 @NgModule({
@@ -26,7 +31,12 @@ import {
     MatFormFieldModule,
     MatSidenavModule,
     MatListModule,
-    MatSelectModule
+    MatSelectModule,
+    MatMomentDateModule,
+    MatOptionModule,
+    MatRadioModule,
+    MatDatepickerModule,
+    MatNativeDateModule
   ],
   exports: [
     MatButtonModule,
@@ -38,7 +48,12 @@ import {
     MatSidenavModule,
     MatListModule,
     MatInputModule,
-    MatSelectModule
+    MatSelectModule,
+    MatMomentDateModule,
+    MatOptionModule,
+    MatRadioModule,
+    MatDatepickerModule,
+    MatNativeDateModule
   ]
 })
 export class MaterialModule {}

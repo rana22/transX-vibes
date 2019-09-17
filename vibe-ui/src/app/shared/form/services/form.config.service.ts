@@ -1,12 +1,12 @@
 import { Injectable } from '@angular/core';
-import { FormFieldModel } from '../model/form.field.model';
+import { FormFields } from '../model/form-fields';
 
 @Injectable({
   providedIn: 'root'
 })
 export class FormConfigService {
 
-  public fields : FormFieldModel[];
+  public fields : FormFields[];
   constructor() { }
 
 
