@@ -1,16 +1,11 @@
 import { Component, EventEmitter, Input, OnChanges, OnInit, Output } from "@angular/core";
 import { FormGroup, FormBuilder, Validators, FormControl } from "@angular/forms";
-import { FormFields } from '../../model/form-fields';
+import { FormField } from '../../model/form-fields';
 import { Validator } from "../../model/validator";
 
 @Component({
   selector: 'app-dynamic-form',
-  template: `
-  <form class="dynamic-form" [formGroup]="form" (submit)="onSubmit($event)">
-  <ng-container *ngFor="let field of fields;" dynamicField [field]="field" [group]="form">
-  </ng-container>
-  </form>
-  `,
+  templateUrl: './dynamic-form.component.html',
   styles: []
 })
 export class DynamicFormComponent implements OnInit {
@@ -22,7 +17,7 @@ export class DynamicFormComponent implements OnInit {
     this.form = this.createControl();
   }
 
-  @Input() fields: FormFields[] = [];
+  @Input() fields: FormField[] = [];
   @Output() submit: EventEmitter<any> = new EventEmitter<any>();
   form: FormGroup;
 

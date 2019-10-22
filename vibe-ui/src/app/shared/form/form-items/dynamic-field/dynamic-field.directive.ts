@@ -9,7 +9,7 @@ import { SelectComponent } from "../select/select.component";
 import { DatePickerComponent } from "../date-picker/date-picker.component";
 import { RadiobuttonComponent } from "../radiobutton/radiobutton.component";
 import { CheckboxComponent } from "../checkbox/checkbox.component";
-import { FormFields } from '../../model/form-fields';
+import { FormField } from '../../model/form-fields';
 
 const componentMapper = {
   input: InputComponent,
@@ -27,7 +27,7 @@ export class DynamicFieldDirective implements OnInit {
 
   componentRef: any;
 
-  @Input() field: FormFields;
+  @Input() field: FormField;
   @Input() group: FormGroup;
   constructor(
     private resolver: ComponentFactoryResolver,

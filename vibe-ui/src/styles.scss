@@ -8,7 +8,33 @@ $fa-font-path: "~font-awesome/fonts";
 @import "./assets/styles/theme.scss";
 @import "~@angular/material/prebuilt-themes/deeppurple-amber.css";
 
+//font defined
+$base_font_url: '/assets/fonts';
+$thin-weight: 100;
+$light-weight: 300;
+$regular-weight: 400;
+$semi-bold-weight: 600;
+$bold-weight: 700;
+
+$base_font_family: 'ProximaNova' !default;
+@mixin font-face($file_name, $baseurl, $weight){
+	@font-face{
+		font-family: $file_name;
+		src: url($baseurl + $file_name + '.otf');
+		font-weight: $weight;
+	}
+}
+
+// @font-face declarations
+@include font-face('ProximaNovaThin', $base_font_url, $thin-weight);
+@include font-face('ProximaNovaLight', $base_font_url, $light-weight);
+@include font-face('ProximaNovaLightItalic', $base_font_url, $light-weight);
+@include font-face('ProximaNova-Regular', $base_font_url, $regular-weight);
+@include font-face('ProximaNovaRegularItalic', $base_font_url, $regular-weight);
+@include font-face('ProximaNovaSemiBold', $base_font_url, $semi-bold-weight);
+@include font-face('ProximaNovaCon', $base_font_url, $bold-weight);
+
 
 
 html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+body , h1, h2, h3, h5, p, label, * { margin: 0; font-family: "ProximaNova-Regular", "Helvetica Neue", sans-serif; }

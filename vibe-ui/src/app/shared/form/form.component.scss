@@ -1,9 +1,8 @@
 // Use mat-color to extract individual colors from a palette as necessary.
 .form-card {
     top: 50px;
-    background-color: mat-color($tdk-app-accent, 200);
+    background-color: mat-color($vibe-app-accent, 50);
     border-color: mat-color($mat-blue, 700) !important;
-    max-width: 500px;
     margin: 25px auto;
 
     mat-card-title{

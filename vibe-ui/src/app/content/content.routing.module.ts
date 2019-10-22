@@ -11,8 +11,7 @@ const routes: Routes = [
   { path: 'home', component: HomeComponent },
   { path: 'download', component: DownloadComponent },
   { path: 'gallery', component: GalleryComponent },
-  { path: 'about', component: AboutComponent },
-  { path: 'form', component: FormComponent}
+  { path: 'about', component: AboutComponent }
 ];
 
 export const ContentRoutingModule: ModuleWithProviders = RouterModule.forChild(routes);

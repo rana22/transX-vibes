@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup } from '@angular/forms';
-import { FormFields } from '../../model/form-fields';
+import { FormField } from '../../model/form-fields';
 
 @Component({
   selector: 'app-select',
@@ -9,7 +9,7 @@ import { FormFields } from '../../model/form-fields';
 })
 export class SelectComponent implements OnInit {
 
-  field: FormFields;
+  field: FormField;
   group: FormGroup;
   constructor() {}
   ngOnInit() {}

@@ -1,31 +1,17 @@
-<!-- <mat-card class="form-card">
+<div class="row">
+  <div [ngClass]="formStyle.width">
+  <mat-card class="form-card">
+    <mat-card-title class="text-center" id="form-title">
+      {{formFieldConfig.title}}
+    </mat-card-title>
+    <hr>
+    <app-dynamic-form [fields]="formFieldConfig.formFields" (submit)="submit($event)">
+    </app-dynamic-form>
 
-
-  <mat-card-title class="text-center" id="form-title">
-    Upload Product Images
-  </mat-card-title>
-
-  <form #uploadForm="ngForm" id="form-content">
-    <div class="form-items" *ngFor="let field of fields">
-        <mat-form-field appearance="outline">
-            <mat-label >{{field.key}} </mat-label>
-            <input matInput type="field.value">
-        </mat-form-field>
+    <br><br>
+    <div class="margin-top">
+      {{ form.value | json }}
     </div>
-      
-  </form>
-  
-  
-
-</mat-card> -->
-
-<mat-card class="form-card">
-  <mat-card-title class="text-center" id="form-title">
-        Upload Product Images
-  </mat-card-title>
-  <app-dynamic-form [fields]="regConfig" (submit)="submit($event)">
-  </app-dynamic-form>
-  <div class="margin-top">
-    {{ form.value | json }}
+  </mat-card>
   </div>
-</mat-card>
+</div>

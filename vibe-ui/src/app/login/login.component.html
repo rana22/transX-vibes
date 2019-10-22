@@ -1,54 +1,5 @@
-<div id="okta-signin-container"></div>
-<!-- <mat-card class="login-card">
-  <mat-card-title>
-    Login
-  </mat-card-title>
+<vibe-app-form 
+  [formFieldConfig]="formFieldConfig"
+  [formStyle]="formStyle">
 
-  <form #loginForm="ngForm" class="example-form">
-    <div fxLayout="row">
-      <div fxFlex.xs="100%" fxFlex="95%">
-        <div fxLayout="column">
-              <mat-form-field fxFlex="95%">
-                <input matInput placeholder="Username" [(ngModel)]="model.username" name="username" required>
-              </mat-form-field>
-
-            <mat-form-field fxFlex="95%">
-              <input  matInput placeholder="Password" [(ngModel)]="model.password" name="password" type="password" required>
-            </mat-form-field>
-
-          <div fxFlex>
-            <div class="form-button-group" fxLayout="row" fxLayoutWrap fxLayoutAlign="space-between center">
-              <button mat-raised-button fxFlex.xs="95%" fxFlex="30%" [disabled]="false"  (click)="login()" type="submit" color="primary">LOGIN</button>
-              <a mat-button fxFlex.xs="95%" fxFlex="30%" href routerLink="forgot-password">Forgot Password?</a>
-            </div>
-          </div>
-
-          <span layout="row"><hr flex/></span>
-
-          <div fxFlex>
-            <button color="primary" mat-raised-button fxFlex="100%" fxFlex.gt-sm="100%"
-                    (click)="oktaAuth.loginRedirect()">LOGIN with OKTA
-            </button>
-          </div>
-        </div>
-      </div>
-    </div>
-  </form>
-</mat-card> -->
-
-<!-- <mat-toolbar color="primary">
-  <span>Welcome to {{title}}!</span>
-  <span class="toolbar-spacer"></span>
-  <button mat-raised-button color="accent" *ngIf="isAuthenticated"
-          (click)="oktaAuth.logout()">Logout
-  </button>
-</mat-toolbar> 
-
- <mat-card *ngIf="!isAuthenticated">
-  <mat-card-content>
-    <button mat-raised-button color="accent"
-            (click)="oktaAuth.loginRedirect()">Login
-    </button>
-  </mat-card-content>
-</mat-card> -->
-
+</vibe-app-form>

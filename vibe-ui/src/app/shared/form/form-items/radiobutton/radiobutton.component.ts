@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormFields } from '../../model/form-fields';
+import { FormField } from '../../model/form-fields';
 import { FormGroup } from '@angular/forms';
 
 @Component({
@@ -9,7 +9,7 @@ import { FormGroup } from '@angular/forms';
 })
 export class RadiobuttonComponent implements OnInit {
 
-  field: FormFields;
+  field: FormField;
   group: FormGroup;
   constructor() {}
   ngOnInit() {

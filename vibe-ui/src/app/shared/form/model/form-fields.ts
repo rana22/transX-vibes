@@ -1,6 +1,6 @@
 import { Validator } from './validator';
 
-export class FormFields {
+export class FormField {
 
     // key : any;
     label?: string;
@@ -11,5 +11,11 @@ export class FormFields {
     type: string;
     value?: any;
     validations?: Validator[];
+    action?: String;
     
+}
+
+export class FormConfig {
+    formFields : FormField[]; 
+    title : string;
 }

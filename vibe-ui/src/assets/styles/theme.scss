@@ -9,43 +9,43 @@
 // Define the palettes for your theme using the Material Design palettes available in palette.scss
 // (imported above). For each palette, you can optionally specify a default, lighter, and darker
 // hue. Available color palettes: https://material.io/design/color/
-$candy-app-primary: mat-palette($mat-indigo);
-$candy-app-accent:  mat-palette($mat-pink, A200, A100, A400);
+$candy-app-primary: mat-palette($mat-blue);
+$candy-app-accent: mat-palette($mat-pink, A200, A100, A400);
 
 // The warn palette is optional (defaults to red).
-$candy-app-warn:    mat-palette($mat-red);
+$candy-app-warn: mat-palette($mat-red);
 
 // Create the theme object (a Sass map containing all of the palettes).
-$candy-app-theme: mat-light-theme($candy-app-primary, $candy-app-accent, $candy-app-warn);
+// $candy-app-theme: mat-light-theme($candy-app-primary, $candy-app-accent, $candy-app-warn);
 
 // Include theme styles for core and each component used in your app.
 // Alternatively, you can import and @include the theme mixins for each component
 // that you are using.
-@include angular-material-theme($candy-app-theme);
+// @include angular-material-theme($candy-app-theme);
 
 // Include the base styles for Angular Material core. We include this here so that you only
 // have to load a single css file for Angular Material in your app.
-@include mat-core();
+// @include mat-core();
 
 // Define the palettes for your theme using the Material Design palettes available in palette.scss
 // (imported above). For each palette, you can optionally specify a default, lighter, and darker
 // hue.
 
 $mat-primary: (
-  50: #f2e0e5,
-  100: #deb3be,
-  200: #c88093,
-  300: #b14d68,
-  400: #a12647,
-  500: #900027,
-  600: #880023,
-  700: #7d001d,
-  800: #730017,
-  900: #61000e,
-  A100: #ff9198,
-  A200: #ff5e68,
-  A400: #ff2b38,
-  A700: #ff1220,
+  50: #BBDEFB,
+  100: #BBDEFB,
+  200: #90CAF9,
+  300: #42A5F5,
+  400: #42A5F5,
+  500: #2196F3,
+  800: #1E88E5,
+  900: #1976D2,
+  1000: #1565C0,
+  1100: #0D47A1,
+  A100: #82B1FF,
+  A200: #448AFF,
+  A400: #2979FF,
+  A700: #2962FF,
   contrast: (
     50: $black-87-opacity,
     100: $black-87-opacity,
@@ -64,6 +64,7 @@ $mat-primary: (
   )
 );
 
+// #fbfafa
 $mat-accent: (
   0: #ffffff,
   50: #fafafa,
@@ -101,19 +102,19 @@ $mat-accent: (
   )
 );
 
-$tdk-app-primary: mat-palette($mat-blue);
-$tdk-app-accent:  mat-palette($mat-accent);
+$vibe-app-primary: mat-palette($mat-primary);
+$vibe-app-accent: mat-palette($mat-accent);
 
 // The warn palette is optional (defaults to red).
-$tdk-app-warn:    mat-palette($mat-deep-orange);
+$vibe-app-warn: mat-palette($mat-red);
 
 // Create the theme object (a Sass map containing all of the palettes).
-$tdk-app-theme: mat-dark-theme($tdk-app-primary, $tdk-app-accent, $tdk-app-warn);
+$vibe-app-theme: mat-dark-theme($vibe-app-primary, $vibe-app-accent, $vibe-app-warn);
 
 // Include theme styles for core and each component used in your app.
 // Alternatively, you can import and @include the theme mixins for each component
 // that you are using.
-@include angular-material-theme($tdk-app-theme);
+@include angular-material-theme($vibe-app-theme);
 
 body {
   background-color: #303030;
@@ -124,7 +125,7 @@ body {
 }
 
 a:hover, a:focus {
-  color: mat-color($tdk-app-primary, 500);
+  color: mat-color($vibe-app-primary, 500);
   text-decoration: none;
   outline: none;
 }
@@ -136,15 +137,15 @@ a:hover, a:focus {
 }
 
 .app-theme-primary{
-  color: mat-color($tdk-app-primary);
+  color: mat-color($vibe-app-primary);
 }
 
 .app-theme-accent{
-  color: mat-color($tdk-app-accent);
+  color: mat-color($vibe-app-accent);
 }
 
 .app-theme-warn{
-  color: mat-color($tdk-app-warn);
+  color: mat-color($vibe-app-warn);
 }
 
 .noteUpload {
@@ -160,26 +161,26 @@ a:hover, a:focus {
   width: 500px;
 }
 
-.tdk-spacer {
+.vibe-spacer {
   flex: 1 1 auto;
 }
 
-.tdk-full-width {
+.vibe-full-width {
   width: 95%;
 }
 
-.tdk-half-width {
+.vibe-half-width {
   width: 47.5%;
 }
 
-.tdk-small-width {
+.vibe-small-width {
   width: 23.75%
 }
 
 .child-card {
-  background-color: mat-color($tdk-app-accent, 700);
-  border-color: mat-color($tdk-app-primary);
-  color: mat-contrast($tdk-app-accent, 700);
+  background-color: mat-color($vibe-app-accent, 700);
+  border-color: mat-color($vibe-app-primary);
+  color: mat-contrast($vibe-app-accent, 700);
 }
 
 .ng-busy-default-wrapper {
@@ -194,8 +195,8 @@ a:hover, a:focus {
   max-width: 1000px !important;
 }
 
-.tdk-divider {
-  background-color: mat-color($tdk-app-primary, 700);
+.vibe-divider {
+  background-color: mat-color($vibe-app-primary, 700);
   margin-bottom: 10px !important;
   margin-top: 10px !important;
   &.dark{
@@ -205,22 +206,22 @@ a:hover, a:focus {
 
 //expansion panel overrides
 .expansion-panel {
-  background: mat-color($tdk-app-accent, 700) !important;
+  background: mat-color($vibe-app-accent, 700) !important;
 }
 .expansion-panel__header{
   &:hover{
-    background: mat-color($tdk-app-primary, 500)!important;
+    background: mat-color($vibe-app-primary, 500)!important;
   }
   &:focus{
-    background: mat-color($tdk-app-primary, 500)!important;
+    background: mat-color($vibe-app-primary, 500)!important;
   }
-  background: mat-color($tdk-app-primary, 500)!important;
+  background: mat-color($vibe-app-primary, 500)!important;
 }
 
 .expansion-panel__content {
   @extend .child-card;
   margin-left: 0 !important;
-  background: mat-color($tdk-app-accent, 700) !important;
+  background: mat-color($vibe-app-accent, 700) !important;
 }
 
 //ag-grid theme overrides
@@ -233,7 +234,7 @@ a:hover, a:focus {
   margin: 5px;
 }
 .mat-chip:not(.mat-basic-chip) {
-  background-color: mat-color($tdk-app-accent);
+  background-color: mat-color($vibe-app-accent);
 }
 
 //button overrides for chips
@@ -249,7 +250,7 @@ a:hover, a:focus {
   cursor: pointer;
   .mat-list {
     .mat-subheader {
-      background-color: mat-color($tdk-app-primary, 400);
+      background-color: mat-color($vibe-app-primary, 400);
       color: black;
       font-weight: bold;
     }
@@ -265,24 +266,24 @@ a:hover, a:focus {
 }
 
 .mat-toolbar.mat-primary {
-  background: mat-color($tdk-app-primary, 400);
+  background: mat-color($vibe-app-primary, 400);
 }
 
 .mat-raised-button.mat-primary, .mat-fab.mat-primary, .mat-mini-fab.mat-primary {
   .mat-input-underline .mat-input-ripple{
-    background-color: mat-color($tdk-app-primary, 500);
+    background-color: mat-color($vibe-app-primary, 500);
   }
   margin: 0 5px;
 }
 
 .mat-select-content, .mat-select-panel-done-animating {
-  background: mat-color($tdk-app-accent, 800);
+  background: mat-color($vibe-app-accent, 800);
   color: white;
 }
 
 .mat-option.mat-selected {
-  background: mat-color($tdk-app-accent, 600);
-  color: mat-color($tdk-app-primary, 300);
+  background: mat-color($vibe-app-accent, 600);
+  color: mat-color($vibe-app-primary, 300);
 }
 
 .ng-busy {
@@ -291,20 +292,20 @@ a:hover, a:focus {
 
 .centered-card {
   top: 50px;
-  background-color: mat-color($tdk-app-accent, 800);
-  border-color: mat-color($tdk-app-primary);
+  background-color: mat-color($vibe-app-accent, 800);
+  border-color: mat-color($vibe-app-primary);
   max-width: 500px;
   margin: 25px auto;
 }
 
 .mat-input-placeholder {
-  color: mat-color($tdk-app-accent, 400) !important;
+  color: mat-color($vibe-app-accent, 400) !important;
 }
 
 .mat-dialog-container {
-  background-color: mat-color($tdk-app-accent, 600);
-  border-color: mat-color($tdk-app-accent, 500);
-  color: black;
+  background-color: mat-color($vibe-app-accent, 600);
+  border-color: mat-color($vibe-app-accent, 500);
+  // color: black;
 }
 
 .material-icons {
@@ -328,11 +329,12 @@ md-select {
   margin: 1em 0;
   padding-bottom: 6px;
 }
-// @import "app/login/login.component.scss";
+@import "../../app/login/login.component.scss";
 // @import "app/portal/portal.scss";
 // @import "app/portal/admin/users/form/user-form.component.scss";//TODO: LOOK INTO SCALABLE IMPORT STRATEGY
 @import "../../app/shared/portalLinkTile/portalLinkTile.component.scss";
 @import "../../app/content/home/home.component.scss";
 @import "../../app/shared/form/form.component.scss";
+@import "../../app/feature/navigate/sidebar/sidebar.component.scss";
 // @import "app/portal/job-sites/job-site";
 // @import "../node_modules/angular2-busy/build/style/busy.css";

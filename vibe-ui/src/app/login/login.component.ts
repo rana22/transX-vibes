@@ -3,56 +3,80 @@ import { OktaAuthService } from '@okta/okta-angular';
 import * as OktaSignIn from '@okta/okta-signin-widget';
 import { Router, NavigationStart } from '@angular/router';
 import { ApiHelper } from '../core/service/services';
+import { FormConfig, FormField } from '../shared/form/model/form-fields';
+import { Validators } from '@angular/forms';
+import { FormStyleCofig } from '../shared/form/model/form.style.model';
 
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
-  styleUrls: ['./login.component.scss']
+  // styleUrls: ['./login.component.scss']
 })
 export class LoginComponent implements OnInit {
   model: any = {};
   title = 'client';
   isAuthenticated: boolean;
 
-  widget = new OktaSignIn({
-    baseUrl: '/api'
-  });
+  // let enc = this.encryptService.set('123456$#@$^@1ERF', loginForm.form.value.password);
+  //   oginForm.form.value.password = enc;
+
+  formFieldConfig: FormConfig = new FormConfig();
+  formStyle : FormStyleCofig = new FormStyleCofig();
 
   constructor(private apiHelper:ApiHelper,
-               public oktaAuth: OktaAuthService, 
                route: Router) {
-
-    route.events.forEach(event => {
-      if (event instanceof NavigationStart) {
-        switch(event.url) {
-          case '/login':
-          case '/calculator':
-            break;
-          default:
-            this.widget.remove();
-            break;
-        }
-      }
-    })
+    
   }
 
   ngOnInit() {
     var authSvc = this;
-    this.widget.renderEl({
-      el: '#okta-signin-container'},
-      (res) => {
-        alert(JSON.stringify(res))
-        if (res.status === 'SUCCESS') {
-          authSvc.apiHelper.setAccessToken(res.session.token);
-          // var createdUser = authSvc.userDAO.createFromServer(user) as any;
-          this.oktaAuth.loginRedirect('/home', { sessionToken: res.session.token });
-          this.widget.hide();
-        }
-      },
-      (err) => {
-        console.warn(err);
-        throw err;
-      }
-    );
+    this.formFieldConfig.formFields = this.regConfig;
+    this.formFieldConfig.title = "Login";
+    this.formStyle.width = "col-md-4 offset-md-4";
   }
+
+  regConfig: FormField[] = [
+    {
+      type: "input",
+      label: "Username",
+      inputType: "text",
+      name: "name",
+      validations: [
+        {
+          name: "required",
+          validator: Validators.required,
+          message: "Name Required"
+        },
+        {
+          name: "pattern",
+          validator: Validators.pattern("^[a-zA-Z]+$"),
+          message: "Accept only text"
+        }
+      ]
+    },
+    {
+      type: "input",
+      label: "Password",
+      inputType: "password",
+      name: "password",
+      validations: [
+        {
+          name: "required",
+          validator: Validators.required,
+          message: "Password Required"
+        }
+      ]
+    },
+    {
+      action: "submit",
+      type: "button",
+      label: "Login",
+    },
+    {
+      action: "cancel",
+      type: "button",
+      label: "Cancel"
+    }
+  ];
+
 }
