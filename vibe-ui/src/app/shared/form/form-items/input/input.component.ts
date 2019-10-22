@@ -5,7 +5,7 @@ import { FormFields } from '../../model/form-fields';
 @Component({
   selector: 'app-input',
   templateUrl: './input.component.html',
-  styleUrls: ['./input.component.scss']
+  styleUrls: []
 })
 export class InputComponent implements OnInit {
 

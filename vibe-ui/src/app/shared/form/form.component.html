@@ -19,15 +19,13 @@
 
 </mat-card> -->
 
-<div class="form">
-  <div style="text-align:center">
-    <h1>
-      Registration Form
-    </h1>
-  </div>
+<mat-card class="form-card">
+  <mat-card-title class="text-center" id="form-title">
+        Upload Product Images
+  </mat-card-title>
   <app-dynamic-form [fields]="regConfig" (submit)="submit($event)">
   </app-dynamic-form>
   <div class="margin-top">
     {{ form.value | json }}
   </div>
-</div>
+</mat-card>

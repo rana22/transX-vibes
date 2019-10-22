@@ -2,7 +2,7 @@
 .form-card {
     top: 50px;
     background-color: mat-color($tdk-app-accent, 200);
-    border-color: mat-color($mat-blue, 700);
+    border-color: mat-color($mat-blue, 700) !important;
     max-width: 500px;
     margin: 25px auto;
 
@@ -38,12 +38,27 @@
         padding-top: 5px;
         color:  mat-color($mat-accent, 800);
     }
+
+    
 }
 
 .form-card #form-content .form-items > * {
     width: 100%;
 }
-  
 
+.form-field-invalid {
+    color: #f02e1d;
+}
+
+.margin-top{
+    color: black;
+}
+  
+@import './form-items/button/button.component.scss';
+@import './form-items/checkbox/checkbox.component.scss';
+@import './form-items/input/input.component.scss';
+@import './form-items/date-picker/date-picker.component.scss';
+@import './form-items/radiobutton/radiobutton.component.scss';
+@import './form-items/select/select.component.scss';
 
   

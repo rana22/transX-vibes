@@ -1,0 +1,38 @@
+.input-row > * {
+    width: 100%;
+}
+
+.input-row{
+    top: 50px;
+    background-color: mat-color($tdk-app-accent, 200);
+    border-color: mat-color($mat-blue, 700);
+    max-width: 500px;
+    margin: 25px auto;
+    .mat-form-field-infix, mat-label{
+        color: mat-color($mat-blue, 700) ;
+    }
+    .mat-form-field-outline-thick{
+        color: mat-color($mat-blue, 300);
+    }
+
+    .form-field-invalid {
+        color: #f02e1d;
+    }
+
+    .mat-form-field-label{
+        color: mat-color($mat-blue, 700);
+    }
+
+   
+
+    mat-error{
+        margin-bottom: 15px;
+    }
+}
+
+
+.mat-form-field-wrapper{
+    .mat-form-field-flex{
+        border-color: mat-color($mat-blue, 700) !important;
+    }
+}
