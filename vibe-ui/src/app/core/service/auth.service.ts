@@ -16,7 +16,5 @@ export class AuthService {
     
   }
 
-  login(){
-    
-  }
+  
 }

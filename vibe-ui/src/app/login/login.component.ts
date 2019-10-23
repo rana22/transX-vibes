@@ -1,31 +1,27 @@
-import { Component, OnInit } from '@angular/core';
-import { OktaAuthService } from '@okta/okta-angular';
-import * as OktaSignIn from '@okta/okta-signin-widget';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { Router, NavigationStart } from '@angular/router';
 import { ApiHelper } from '../core/service/services';
 import { FormConfig, FormField } from '../shared/form/model/form-fields';
 import { Validators } from '@angular/forms';
 import { FormStyleCofig } from '../shared/form/model/form.style.model';
+import { HttpService } from '../service/http.service';
+
 
 @Component({
   selector: 'app-login',
-  templateUrl: './login.component.html',
-  // styleUrls: ['./login.component.scss']
+  templateUrl: './login.component.html'
 })
 export class LoginComponent implements OnInit {
   model: any = {};
   title = 'client';
   isAuthenticated: boolean;
 
-  // let enc = this.encryptService.set('123456$#@$^@1ERF', loginForm.form.value.password);
-  //   oginForm.form.value.password = enc;
-
   formFieldConfig: FormConfig = new FormConfig();
   formStyle : FormStyleCofig = new FormStyleCofig();
 
   constructor(private apiHelper:ApiHelper,
-               route: Router) {
-    
+               route: Router,
+               private http: HttpService) {
   }
 
   ngOnInit() {
@@ -78,5 +74,10 @@ export class LoginComponent implements OnInit {
       label: "Cancel"
     }
   ];
+
+  submit(value){
+    this.http.login(value);
+
+  }
 
 }

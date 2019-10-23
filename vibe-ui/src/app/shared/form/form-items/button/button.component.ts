@@ -4,8 +4,8 @@ import { FormField } from '../../model/form-fields';
 
 @Component({
   selector: 'app-button',
-  templateUrl: './button.component.html',
-  styleUrls: ['./button.component.scss']
+  templateUrl: './button.component.html'
+  // styleUrls: ['./button.component.scss']
 })
 export class ButtonComponent implements OnInit {
 

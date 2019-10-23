@@ -8,7 +8,7 @@ import {Role} from "./role";
 
 export class User extends EntityBase {
 
-    id: number;
+    id?: number;
     username: string;
     email: string;
     firstName: string;

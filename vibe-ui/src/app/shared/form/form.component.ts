@@ -1,6 +1,6 @@
 import { DocumentDetails } from 'src/app/core/models/document';
 import { FormField, FormConfig } from './model/form-fields';
-import { Component, ViewChild, OnInit, Input} from "@angular/core";
+import { Component, ViewChild, OnInit, Input, EventEmitter, Output} from "@angular/core";
 import { Validators } from "@angular/forms";
 import { DynamicFormComponent } from "./form-items/dynamic-form/dynamic-form.component";
 import { FormStyleCofig } from './model/form.style.model';
@@ -19,6 +19,8 @@ export class FormComponent implements OnInit {
   @Input("formFieldConfig") formFieldConfig : FormConfig;
   @Input("formStyle") formStyle : FormStyleCofig;
 
+  @Output() submitForm: EventEmitter<any> = new EventEmitter();
+
   constructor() { }
 
   ngOnInit() {
@@ -26,8 +28,9 @@ export class FormComponent implements OnInit {
     
   }
 
-  submit(event){
-    console.log(event);
+  submit(formvalue){
+    console.log(formvalue);
+    this.submitForm.emit(formvalue);
   }
   
 }

@@ -5,6 +5,7 @@ import { MaterialModule } from '../material.module';
 import { FormsModule } from '@angular/forms';
 import { FlexLayoutModule} from '@angular/flex-layout';
 import { FormModule } from '../shared/form/form.module';
+import { ServiceModule } from '../service/service.module';
 
 @NgModule({
   declarations: [LoginComponent],
@@ -13,7 +14,8 @@ import { FormModule } from '../shared/form/form.module';
     MaterialModule,
     FormsModule,
     FlexLayoutModule,
-    FormModule
+    FormModule,
+    ServiceModule
   ]
 })
 export class LoginModule { }

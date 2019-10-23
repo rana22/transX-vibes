@@ -1,5 +1,5 @@
 <vibe-app-form 
   [formFieldConfig]="formFieldConfig"
-  [formStyle]="formStyle">
+  [formStyle]="formStyle" #form (submitForm)="submit($event)">
 
 </vibe-app-form>
