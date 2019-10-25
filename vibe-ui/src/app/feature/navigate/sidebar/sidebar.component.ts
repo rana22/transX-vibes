@@ -10,6 +10,8 @@ export class SidebarComponent implements OnInit {
 
   isAuthenticated: boolean;
 
+  isLoggedIn: boolean = true;
+
   constructor( public router: Router) {
     
    }

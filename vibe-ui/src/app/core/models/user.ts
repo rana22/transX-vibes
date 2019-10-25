@@ -6,6 +6,7 @@ import {
 } from 'breeze-client';
 import {Role} from "./role";
 
+@Injectable()
 export class User extends EntityBase {
 
     id?: number;

@@ -1,6 +1,6 @@
 .portal-flex-tile-wrap{
-  background-color: mat-color($vibe-app-accent, 500, 0.5);
-  border: 1px solid mat-color($vibe-app-accent, 300);
+  background-color: mat-color($vibe-app-accent, 200);
+  border: 1px solid mat-color($vibe-app-accent, 100);
   cursor: pointer;
 
   &:before {
@@ -28,7 +28,7 @@
     font-size: 48px;
   }
 
-  background-color: mat-color($vibe-app-accent, 300);
+  background-color: mat-color($vibe-app-accent, 100);
   border: solid 2px mat-color($vibe-app-primary, 500);
   color: mat-color($mat-primary, 500);
   font-size: 18px;

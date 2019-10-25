@@ -13,7 +13,6 @@ export class AppComponent implements OnInit {
 
   constructor(private apiHelper : ApiHelper) {
       var self = this;
-      this.apiHelper.setEnvironment(environment.envName);
   }
 
   async ngOnInit() {

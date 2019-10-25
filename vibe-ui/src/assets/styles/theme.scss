@@ -330,10 +330,6 @@ md-select {
   padding-bottom: 6px;
 }
 @import "../../app/login/login.component.scss";
-// @import "app/portal/portal.scss";
-// @import "app/portal/admin/users/form/user-form.component.scss";//TODO: LOOK INTO SCALABLE IMPORT STRATEGY
-@import "../../app/shared/portalLinkTile/portalLinkTile.component.scss";
+@import "../../app/portal/portal.component.scss";
 @import "../../app/shared/form/form.component.scss";
 @import "../../app/feature/navigate/sidebar/sidebar.component.scss";
-// @import "app/portal/job-sites/job-site";
-// @import "../node_modules/angular2-busy/build/style/busy.css";

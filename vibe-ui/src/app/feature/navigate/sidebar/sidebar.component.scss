@@ -18,6 +18,7 @@ mat-toolbar, mat-sidenav{
 
 h3.mat-subheader{
     background: #ffffff !important;
+    
 }
 
 span.mat-button-wrapper{
@@ -27,6 +28,7 @@ span.mat-button-wrapper{
 }
 a.mat-button{
     color: #f7f7f7f5;
+    font-weight: 600;
 }
 #home-btn{
     a{
@@ -39,4 +41,10 @@ a.mat-button{
 a.mat-list-item-content{
     padding-right: 0;
     padding-left: 0;
+}
+
+mat-list-item{
+    a{
+        font-weight: 700;
+    }
 }
