@@ -7,7 +7,7 @@ import TYPES from "../config/properties/Types";
 
 export function AuthCtrlFactory(container: Container) {
 
-    @injectable()
+    // @injectable()
     @controller('/users')
     class AuthController extends BaseHttpController {
 

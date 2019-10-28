@@ -30,7 +30,7 @@ class Setup {
       sequelize.query(sql,{
       }).then(function(results){
         console.log(results);
-      }).catch(function(error) {
+      }).catch(function(error){
         console.warn(error);
       });
   }
@@ -44,6 +44,7 @@ class Setup {
 }
 
 Setup.executeSqlSeeds([
+                'seed/init.sql',
                 'seed/users.sql', 
                 'seed/roles.sql'
               ]);

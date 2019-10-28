@@ -8,7 +8,6 @@ class BaseMiddleware {
         app.use(bodyParser.json());
         return app;
     }
-
 }
 
 Object.seal(BaseMiddleware);

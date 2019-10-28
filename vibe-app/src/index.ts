@@ -14,6 +14,7 @@ import AuthUtil = require('./util/AuthUtil');
 import ControllerModule = require('./controller/ControllerModule');
 import { UserDetailsController } from './controller/UserDetail';
 import { AuthCtrlFactory } from './controller/AuthController';
+import { HandlerGenerator } from './config/HandlerFenerator';
 
 let user = {'id' : 1, 
             username  : 'groot' ,   
@@ -23,7 +24,7 @@ let user = {'id' : 1,
             lastname : 'Iam'};
 
 let container = new Container();
-
+let middleware = require('./middleware');
 container.load(ServiceModule.config);
 container.bind<express.RequestHandler>('Authenticate').toConstantValue(Passport.authenticate(['bearer'], { session: false }));
 
@@ -45,8 +46,6 @@ container.bind<express.RequestHandler>('Permissions').toConstantValue((req: expr
     });
 });
 
-container.bind<express.RequestHandler>('Oauth').toConstantValue(AuthUtil.server.token());
-container.bind<express.ErrorRequestHandler>('OauthError').toConstantValue(AuthUtil.server.errorHandler());
 container.bind<PermissionUtil>("PermissionUtil").to(PermissionUtil);
 container.bind<AuthUtil>("Auth").to(AuthUtil);
 // container.load(ControllerModule.config(container));
@@ -60,9 +59,13 @@ let server = new InversifyExpressServer(container, null, { rootPath: PATH.ROOT }
 var port = 3000;
 
 server.setConfig((app) => {
+    
+    let handlers = new HandlerGenerator();
     app.set("port", port);
     app.use(cors());
     app.use(Middleware.configuration);
+    app.post('/login', handlers.login);
+    app.get('/', middleware.checkToken, handlers.index);
 });
 
 let app = server.build();
@@ -73,3 +76,5 @@ let app = server.build();
         console.log("Node app demo is running at localhost:" + port);
     });
 })();
+
+
