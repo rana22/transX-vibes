@@ -1,3 +1,4 @@
-INSERT INTO user_roles (created, updated, userid, roleid) VALUES
-('1970-01-02', '1970-01-02', 1, 1),
-('1970-01-02', '1970-01-02', 2, 2);
+-- CREATE TABLE user_roles (created DATE, updated DATE, userid INT, roleid INT);
+-- INSERT INTO user_roles (created, updated, userid, roleid) VALUES
+-- ('1970-01-02', '1970-01-02', 1, 1),
+-- ('1970-01-02', '1970-01-02', 2, 2);

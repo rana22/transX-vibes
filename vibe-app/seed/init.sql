@@ -1,2 +1,4 @@
--- DELETE FROM users;
--- DELETE FROM roles;
+BEGIN;
+    DELETE FROM users;
+    DELETE FROM roles;
+COMMIT;

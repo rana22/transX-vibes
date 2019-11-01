@@ -1,71 +1,43 @@
 import 'reflect-metadata';
-import { InversifyExpressServer, TYPE, interfaces } from "inversify-express-utils";
+import { InversifyExpressServer } from "inversify-express-utils";
 import { Container } from 'inversify';
-import './controller/ControllerModule';
 import PATH from './config/properties/Path';
 import sequelize from './dbconfig';
 import ServiceModule = require('./service/ServiceModule');
 var cors = require("cors");
 import Middleware = require("./config/BaseMiddleware");
+import ControllerModule = require('./controller/ControllersModule');
+import AuthUtil = require('./util/AuthUtil');
+import PermissionUtil = require('./util/PermissionUtil');
+const passport = require('passport');
 import * as express from 'express';
 import Passport = require("passport");
-import PermissionUtil = require('./util/PermissionUtil');
-import AuthUtil = require('./util/AuthUtil');
-import ControllerModule = require('./controller/ControllerModule');
-import { UserDetailsController } from './controller/UserDetail';
-import { AuthCtrlFactory } from './controller/AuthController';
-import { HandlerGenerator } from './config/HandlerFenerator';
-
-let user = {'id' : 1, 
-            username  : 'groot' ,   
-            password :'473c0812623754d187d1e4c96af5d5cb' ,  
-            email : 'iam@groot.com' ,   
-            firstname : 'Groot123' ,   
-            lastname : 'Iam'};
-
+import bodyParser = require('body-parser');
 let container = new Container();
+
+container.bind<express.RequestHandler>('Authenticate').toConstantValue(Passport.authenticate(['bearer'], { session: false }));
+container.bind<express.RequestHandler>('Oauth').toConstantValue(AuthUtil.server.token());
+container.bind('OauthError').toConstantValue(AuthUtil.server.errorHandler());
 let middleware = require('./middleware');
 container.load(ServiceModule.config);
-container.bind<express.RequestHandler>('Authenticate').toConstantValue(Passport.authenticate(['bearer'], { session: false }));
-
-container.bind<express.RequestHandler>('Admin').toConstantValue((req: express.Request, res: express.Response, next: Function) => {
-    if(this.httpContext.user.isAuthenticated()) {
-        res.statusCode = 403;
-        return res.end('Forbidden');
-    }
-    return next();
-});
-
-container.bind<express.RequestHandler>('Permissions').toConstantValue((req: express.Request, res: express.Response, next: Function) => {
-    permission.checkUserPermission(req.baseUrl,req.route.path,req.method, user ).then(function (accessResult) {
-        if(!accessResult) {
-            res.statusCode = 403;
-            return res.end('Forbidden');
-        }
-        return next();
-    });
-});
-
 container.bind<PermissionUtil>("PermissionUtil").to(PermissionUtil);
-container.bind<AuthUtil>("Auth").to(AuthUtil);
-// container.load(ControllerModule.config(container));
-container.bind(TYPE.Controller).to(AuthCtrlFactory(container)).whenTargetNamed('TAGS.AuthController');
+container.bind<AuthUtil>("AuthUtil").to(AuthUtil);
+
+ControllerModule.config(container);
 
 let permission: PermissionUtil = <PermissionUtil>container.get("PermissionUtil");
-let auth : AuthUtil = <AuthUtil>container.get("Auth");
+let auth : AuthUtil = <AuthUtil>container.get("AuthUtil");
 auth.init();
 
 let server = new InversifyExpressServer(container, null, { rootPath: PATH.ROOT });
 var port = 3000;
 
 server.setConfig((app) => {
-    
-    let handlers = new HandlerGenerator();
     app.set("port", port);
     app.use(cors());
+    app.use(bodyParser.json());
     app.use(Middleware.configuration);
-    app.post('/login', handlers.login);
-    app.get('/', middleware.checkToken, handlers.index);
+    app.use(passport.initialize());
 });
 
 let app = server.build();

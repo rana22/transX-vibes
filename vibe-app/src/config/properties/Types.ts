@@ -32,7 +32,7 @@ const TYPES = {
 	/* INSERT DAO */
     IJobSiteDao: Symbol('IJobSiteDao'),
 	ISampleDao: Symbol('ISampleDao'),
-	Logger: 'Logger'
+    Logger: 'Logger'
 };
 
 export default TYPES;

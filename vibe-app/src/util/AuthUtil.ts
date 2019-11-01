@@ -8,7 +8,6 @@ import TYPES from "../config/properties/Types";
 import IAuthService = require("../service/IAuthService");
 import IUserService = require("../service/IUserService");
 
-
 const uuidV4 = require('uuid/v4');
 const server = OAuth2orize.createServer();
 
@@ -18,7 +17,8 @@ class AuthUtil{
     @inject(TYPES.IAuthService) private _authService: IAuthService;
     @inject(TYPES.IUserService) private _userService: IUserService;
 
-    init(){ 
+    init(){
+        console.log("from init AuthUtil 1");
         Passport.use(new Bearer.Strategy((token, done) => {
             this._authService.findOne({
                 where: {
@@ -42,7 +42,8 @@ class AuthUtil{
         }));
 
         server.exchange(OAuth2orize.exchange.password((user, username, password, scope, done) => {
-            this._userService.authenticateUser(username,password)
+            console.log("from init AuthUtil 2");
+            this._userService.authenticateUser(username, password)
                 .then((result) => {
                     // user = <User>result;
                     user.getToken().then((token) => {
@@ -66,6 +67,7 @@ class AuthUtil{
         }));
     }
     static get server() {
+        console.log("from init AuthUtil 3");
         return server;
     }
 }

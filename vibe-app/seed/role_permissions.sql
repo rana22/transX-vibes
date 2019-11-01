@@ -1,6 +1,19 @@
+CREATE TABLE  role_permissions  ( created DATE, updated DATE,  roleid INT,  permissionid INT);
 INSERT INTO  role_permissions  ( created, updated, roleid ,  permissionid ) VALUES
 
-(now(), now(), 1, 1)
+(now(), now(), 1, 1),
+(now(), now(), 1, 2),
+(now(), now(), 1, 3),
+(now(), now(), 1, 4),
+(now(), now(), 1, 5),
+(now(), now(), 1, 6),
+(now(), now(), 1, 7),
+(now(), now(), 1, 8),
+(now(), now(), 2, 1),
+(now(), now(), 2, 2),
+(now(), now(), 2, 4),
+(now(), now(), 2, 6);
+
 -- ('1970-01-02', '1970-01-02', 1, 2),
 -- ('1970-01-02', '1970-01-02', 1, 3),
 -- ('1970-01-02', '1970-01-02', 1, 4),
