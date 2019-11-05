@@ -19,7 +19,7 @@ export class Token extends Model<Token>{
     token?: string;
 
     // @BelongsTo(() => User)
-    // @ForeignKey(() => User)
+    @ForeignKey(() => User)
     @Column({
         type: DataType.INTEGER
     })

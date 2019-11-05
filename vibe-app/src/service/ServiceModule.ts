@@ -4,6 +4,7 @@ import IPersonService = require("./IPersonService");
 import PersonService = require("./PersonService");
 import IUserService = require("./IUserService");
 // import UserService = require("./UserService");
+import Bind = interfaces.Bind;
 import { User } from "../model/User";
 import UserService = require("./UserService");
 import IPermissionService = require("./IPermissionService");
@@ -13,7 +14,7 @@ import AuthService = require("./AuthService");
 
 class ServiceModule {
     static get config () {
-        return new ContainerModule((bind: interfaces.Bind) => {
+        return new ContainerModule((bind: Bind) => {
             bind<IPersonService>(TYPES.IPersonService).to(PersonService).inSingletonScope();
             bind<IUserService>(TYPES.IUserService).to(UserService).inSingletonScope();
             bind<IPermissionService>(TYPES.IPermissionService).to(PermissionService).inSingletonScope();

@@ -16,7 +16,9 @@ export function AuthControllerFactory(container: Container){
             }
     
             @httpPost('/login', container.get<e.RequestHandler>('Oauth'), container.get<e.RequestHandler>('OauthError'))
-            public login(req: e.Request, res: e.Response): void {}
+            public login(req: e.Request, res: e.Response): void {
+                console.log("test")
+            }
     
             @httpPost('/logout')
             public logout(req: e.Request, res: e.Response): any {

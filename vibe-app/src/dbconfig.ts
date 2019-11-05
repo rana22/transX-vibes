@@ -47,8 +47,8 @@ Setup.executeSqlSeeds([
                 'seed/init.sql',
                 'seed/users.sql', 
                 'seed/roles.sql',
-                'seed/user_roles.sql',
-                'seed/role_permissions.sql'
+                // 'seed/user_roles.sql',
+                // 'seed/role_permissions.sql'
               ]);
 
 export default sequelize;

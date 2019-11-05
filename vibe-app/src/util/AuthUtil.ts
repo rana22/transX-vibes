@@ -7,17 +7,19 @@ import md5 = require("md5");
 import TYPES from "../config/properties/Types";
 import IAuthService = require("../service/IAuthService");
 import IUserService = require("../service/IUserService");
+import { User } from "../model/User";
+import { Token } from "../model/Token";
 
 const uuidV4 = require('uuid/v4');
 const server = OAuth2orize.createServer();
 
 @injectable()
-class AuthUtil{
+class AuthUtil {
 
     @inject(TYPES.IAuthService) private _authService: IAuthService;
     @inject(TYPES.IUserService) private _userService: IUserService;
 
-    init(){
+    init() {
         console.log("from init AuthUtil 1");
         Passport.use(new Bearer.Strategy((token, done) => {
             this._authService.findOne({
@@ -25,7 +27,7 @@ class AuthUtil{
                     token: token
                 }
             }).then((token) => {
-                if(token) {
+                if (token) {
                     this._userService.findById(token.userId)
                         .then((user) => {
                             done(null, user, null);
@@ -33,7 +35,7 @@ class AuthUtil{
                         .catch((error) => {
                             done(error, null, null);
                         });
-                }else {
+                } else {
                     done(null, null, null);
                 }
             }).catch((error) => {
@@ -42,24 +44,22 @@ class AuthUtil{
         }));
 
         server.exchange(OAuth2orize.exchange.password((user, username, password, scope, done) => {
-            console.log("from init AuthUtil 2");
             this._userService.authenticateUser(username, password)
                 .then((result) => {
-                    // user = <User>result;
-                    user.getToken().then((token) => {
-                        if(token) {
-                            done(null,token.token, null, { user: user });
-                        }else {
-                            user.createToken({token: uuidV4()})
-                                .then((result) => {
-                                    if(result) {
-                                        user.getToken().then((token) => {
-                                            done(null,token.token, null, { user: user });
-                                        });
-                                    }
-                                });
-                        }
-                    });
+                    user = <User>result;
+                    Token.findOne({ where: { userId: user.id } })
+                        .then((token) => {
+                            if (token) {
+                                done(null,token.token, null, { user: user });
+                            } else {
+                                Token.create({ userId: user.id, token: uuidV4()})
+                                    .then((result) => {
+                                        if (result) {
+                                            done(null, result.token, null, { user: user });
+                                        }
+                                    });
+                            }
+                        })
                 })
                 .catch((error) => {
                     done(error);
@@ -67,7 +67,6 @@ class AuthUtil{
         }));
     }
     static get server() {
-        console.log("from init AuthUtil 3");
         return server;
     }
 }

@@ -2,7 +2,9 @@ import { BelongsToMany, Column, CreatedAt, Model, Scopes, Table, UpdatedAt, Prim
 import { Role } from './Role';
 import { injectable } from 'inversify';
 
-@Table
+@Table({
+    tableName: 'users'
+})
 export class User extends Model<User>{
 
     @PrimaryKey
@@ -35,13 +37,13 @@ export class User extends Model<User>{
         type: DataType.STRING, 
         allowNull: false 
     })
-    firstName: string;
+    firstname: string;
 
     @Column({ 
         type: DataType.STRING, 
         allowNull: false 
     })
-    lastName: string;
+    lastname: string;
 
     @Column({ 
         type: DataType.STRING, 
