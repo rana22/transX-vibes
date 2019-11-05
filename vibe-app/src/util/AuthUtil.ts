@@ -50,14 +50,14 @@ class AuthUtil {
                     Token.findOne({ where: { userId: user.id } })
                         .then((token) => {
                             if (token) {
-                                done(null,token.token, null, { user: user });
+                                done(null, token.token, null, { user: user });
                             } else {
                                 Token.create({ userId: user.id, token: uuidV4()})
                                     .then((result) => {
                                         if (result) {
                                             done(null, result.token, null, { user: user });
                                         }
-                                    });
+                                });
                             }
                         })
                 })

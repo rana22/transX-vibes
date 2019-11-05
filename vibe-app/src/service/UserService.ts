@@ -79,7 +79,8 @@ class UserService implements IUserService{
     findByUsernamePassword(_username: string, _password: string) : Promise<User>{
         return new Promise<User>((resolve, reject) => {
             User.findOne({where:{
-                id : 1
+                username : _username,
+                password : _password
             }}).then((results) => {
                 if(results) {
                     console.log(results);
@@ -106,8 +107,6 @@ class UserService implements IUserService{
     }
 
     public authenticateUser(_username: string, _password: string) : Promise<User> {
-        console.log("check for authenticateUser");
-        console.log(_username);
         return new Promise<User>((resolve, reject) => {
             this.findByUsernamePassword(_username, md5(_password))
                 .then((results) => {
