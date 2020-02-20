@@ -4,6 +4,7 @@ import { InventoryAndServicesComponent } from './inventoryAndServices/inventoryA
 import { ProfileComponent } from './profile/profile.component';
 import { MaterialModule } from 'src/app/material.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { FormModule } from 'src/app/shared/form/form.module';
 
 @NgModule({
   declarations: [
@@ -14,7 +15,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     CommonModule,
     MaterialModule,
     FormsModule, 
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    FormModule
   ],
   exports: [
     ProfileComponent,

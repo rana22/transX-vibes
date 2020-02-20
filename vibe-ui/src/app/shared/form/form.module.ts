@@ -41,7 +41,8 @@ import { DynamicFormComponent } from './form-items/dynamic-form/dynamic-form.com
     DynamicFieldDirective,
     DynamicFormComponent
   ],
-  entryComponents: [InputComponent,
+  entryComponents: [
+    InputComponent,
     ButtonComponent,
     SelectComponent,
     DatePickerComponent,

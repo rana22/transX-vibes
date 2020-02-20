@@ -71,11 +71,13 @@ export class ApiHelper {
     return path;
   }
 
-  public getDefaultHeader(): Headers {
-    let headers: Headers = new Headers({ 'Content-Type': 'application/json' });
-    if (!this.getAccessToken()) {
-      return headers;
-    }
+  public getDefaultHeader(): HttpHeaders {
+    let headers: HttpHeaders = new HttpHeaders({ 'Content-Type': 'application/json' });
+    // if (!this.getAccessToken()) {
+    //   console.log("no bear");
+    //   return headers;
+    // }
+    console.log("bear");
     headers.set('Authorization', 'Bearer ' + this.getAccessToken());
     return headers;
   }
@@ -179,7 +181,6 @@ export class ApiHelper {
   public setAccessToken(token: string) {
     this.accessToken = token;
     window.localStorage.setItem('accessToken', token);
-
   }
 
   public removeAccessToken() {

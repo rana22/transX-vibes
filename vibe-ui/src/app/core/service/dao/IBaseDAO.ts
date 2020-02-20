@@ -2,7 +2,7 @@
  * Created by rkidwai on 3/7/17.
  */
 import { Entity, EntityManager, EntityAspect, EntityType, EntityQuery, QueryResult, EntityState } from 'breeze-client';
-import {Observable} from "rxjs";
+import { Observable } from "rxjs";
 
 export interface IBaseDAO {
 

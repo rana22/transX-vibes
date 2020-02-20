@@ -50,8 +50,8 @@ import { ServiceModule } from './service/service.module';
     ServiceModule
   ],
   providers: [
-    ApiHelper,
-    {provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true}
+    ApiHelper
+    // {provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true}
   ],
   bootstrap: [AppComponent]
 })

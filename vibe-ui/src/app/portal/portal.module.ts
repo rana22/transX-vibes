@@ -9,6 +9,7 @@ import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { PortalLinkTileComponent } from './components/dashboard/portalLinkTile/portalLinkTile.component';
 import { MaterialModule } from '../material.module';
 import { FlexLayoutModule } from '@angular/flex-layout';
+import { FormModule } from '../shared/form/form.module';
 
 @NgModule({
   declarations: [
@@ -23,7 +24,8 @@ import { FlexLayoutModule } from '@angular/flex-layout';
     RouterModule,
     PortalComponentModule,
     MaterialModule,
-    FlexLayoutModule
+    FlexLayoutModule,
+    FormModule
   ]
 })
 export class PortalModule { }

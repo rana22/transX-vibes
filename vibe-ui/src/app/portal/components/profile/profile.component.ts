@@ -2,6 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { User } from 'src/app/core/models/user';
 import { Router } from '@angular/router';
 import { Role } from 'src/app/core/models/role';
+import { FormConfig, FormField } from 'src/app/shared/form/model/form-fields';
+import { FormStyleCofig } from 'src/app/shared/form/model/form.style.model';
+import { Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-profile',
@@ -14,6 +17,12 @@ export class ProfileComponent implements OnInit {
   public currentUser: User;
   public userRoles: number[] = [];
 
+  title = 'client';
+  isAuthenticated: boolean;
+
+  formFieldConfig: FormConfig = new FormConfig();
+  formStyle : FormStyleCofig = new FormStyleCofig();
+
   constructor( private router: Router) {
     // this.currentUser = this.userDAO.getCurrentUser();
   }
@@ -24,6 +33,10 @@ export class ProfileComponent implements OnInit {
     usr.username = "kthapa";
     this.model = usr;
     // this.model = this.currentUser;
+
+    this.formFieldConfig.formFields = this.profileConfig;
+    this.formFieldConfig.title = "Profile";
+    this.formStyle.width = "col-md-6 offset-md-3";
   }
 
   updateProfile() {
@@ -48,5 +61,91 @@ export class ProfileComponent implements OnInit {
     this.router.navigate(['portal']);
   }
 
+
+
+  profileConfig: FormField[] = [
+    {
+      type: "input",
+      label: "Username",
+      inputType: "text",
+      name: "name",
+      validations: [
+        {
+          name: "required",
+          validator: Validators.required,
+          message: "Name Required"
+        },
+        {
+          name: "pattern",
+          validator: Validators.pattern("^[a-zA-Z]+$"),
+          message: "Accept only text"
+        }
+      ]
+    },
+    {
+      type: "input",
+      label: "First Name",
+      inputType: "text",
+      name: "fname",
+      validations: [
+        {
+          name: "required",
+          validator: Validators.required,
+          message: "Name Required"
+        },
+        {
+          name: "pattern",
+          validator: Validators.pattern("^[a-zA-Z]+$"),
+          message: "Accept only text"
+        }
+      ]
+    },
+    {
+      type: "input",
+      label: "Last Name",
+      inputType: "text",
+      name: "lname",
+      validations: [
+        {
+          name: "required",
+          validator: Validators.required,
+          message: "Name Required"
+        },
+        {
+          name: "pattern",
+          validator: Validators.pattern("^[a-zA-Z]+$"),
+          message: "Accept only text"
+        }
+      ]
+    },
+    {
+      type: "input",
+      label: "Email",
+      inputType: "text",
+      name: "email",
+      validations: [
+        {
+          name: "required",
+          validator: Validators.required,
+          message: "Name Required"
+        },
+        {
+          name: "pattern",
+          validator: Validators.pattern("^[a-zA-Z]+$"),
+          message: "Accept only text"
+        }
+      ]
+    },
+    {
+      action: "submit",
+      type: "button",
+      label: "Save",
+    },
+    {
+      action: "cancel",
+      type: "button",
+      label: "Cancel"
+    }
+  ];
 }
 

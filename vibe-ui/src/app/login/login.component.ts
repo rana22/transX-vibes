@@ -36,7 +36,7 @@ export class LoginComponent implements OnInit {
       type: "input",
       label: "Username",
       inputType: "text",
-      name: "name",
+      name: "username",
       validations: [
         {
           name: "required",
@@ -76,7 +76,19 @@ export class LoginComponent implements OnInit {
   ];
 
   submit(value){
-    this.http.login(value);
+    var authSvc = this;
+    console.log(value);
+    this.http.login(value)
+      .subscribe(
+        (res: any)=>{
+          let user = res.user;
+          let token = res.access_token;
+          authSvc.apiHelper.setAccessToken(token);
+        },
+        err =>{
+          console.log(err)
+        }
+      )
 
   }
 

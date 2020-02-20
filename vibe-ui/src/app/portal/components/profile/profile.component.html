@@ -1,4 +1,11 @@
-<mat-card class="centered-card">
+<vibe-app-form 
+  [formFieldConfig]="formFieldConfig"
+  [formStyle]="formStyle" #form (submitForm)="submit($event)">
+
+</vibe-app-form>
+
+
+<!-- <mat-card class="centered-card">
 
   <mat-card-title>
     {{model.username}}
@@ -33,4 +40,4 @@
       </div>
     </div>
   </form>
-</mat-card>
+</mat-card> -->
