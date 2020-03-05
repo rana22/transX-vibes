@@ -17,13 +17,13 @@ export function masterPermissionDaoFactory(apiHelper:ApiHelper, entityManagerFac
   return  new PermissionDAO(ConstantMan.MANAGERS.MASTER, apiHelper, entityManagerFactory);
 }
 
-export function masterJobSiteDaoFactory(apiHelper:ApiHelper, entityManagerFactory:EntityManagerFactory) {
-  // return  new JobSiteDAO(ConstantMan.MANAGERS.MASTER, apiHelper, entityManagerFactory);
-}
+// export function masterJobSiteDaoFactory(apiHelper:ApiHelper, entityManagerFactory:EntityManagerFactory) {
+//   // return  new JobSiteDAO(ConstantMan.MANAGERS.MASTER, apiHelper, entityManagerFactory);
+// }
 
-export function masterSampleDAOFactory(apiHelper:ApiHelper, entityManagerFactory:EntityManagerFactory) {
-  // return  new SampleDAO(ConstantMan.MANAGERS.MASTER, apiHelper, entityManagerFactory);
-}
+// export function masterSampleDAOFactory(apiHelper:ApiHelper, entityManagerFactory:EntityManagerFactory) {
+//   // return  new SampleDAO(ConstantMan.MANAGERS.MASTER, apiHelper, entityManagerFactory);
+// }
 
 export function provideMasterUserDAO() {
   return {
@@ -46,16 +46,16 @@ export function provideMasterPermissionDAO() {
   }
 }
 
-export function provideMasterJobSiteDAO() {
-  // return {
-  //   provide: JobSiteDAO, useFactory: masterJobSiteDaoFactory,
-  //   deps:[ApiHelper, EntityManagerFactory]
-  // }
-}
+// export function provideMasterJobSiteDAO() {
+//   // return {
+//   //   provide: JobSiteDAO, useFactory: masterJobSiteDaoFactory,
+//   //   deps:[ApiHelper, EntityManagerFactory]
+//   // }
+// }
 
-export function provideMasterSampleDAO() {
-  // return {
-  //   provide: SampleDAO, useFactory: masterSampleDAOFactory,
-  //   deps:[ApiHelper, EntityManagerFactory]
-  // }
-}
+// export function provideMasterSampleDAO() {
+//   // return {
+//   //   provide: SampleDAO, useFactory: masterSampleDAOFactory,
+//   //   deps:[ApiHelper, EntityManagerFactory]
+//   // }
+// }

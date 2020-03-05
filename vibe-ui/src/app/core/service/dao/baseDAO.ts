@@ -72,6 +72,8 @@ export abstract class BaseDAO implements IBaseDAO {
   }
 
   public createFromServer(initialVals: Object): Entity {
+    console.log("create from server == " + this.eType);
+    console.log(initialVals);
     return this.manager.createEntityFromServer(this.eType, initialVals);
   }
 
@@ -93,6 +95,8 @@ export abstract class BaseDAO implements IBaseDAO {
     return new Promise<any>((resolve, reject) => {
       this.createEntityCall(initialVals, this.resource).toPromise()
         .then((results) => {
+          console.log("baseDOA");
+          console.log(results)
           let serverEntity: Entity = this.manager.createEntityFromServer(this.eType, results.json);
           //Entity returned from server only has type value assigned to it. so discard it.
           serverEntity.entityAspect.setDetached();
@@ -137,6 +141,8 @@ export abstract class BaseDAO implements IBaseDAO {
   }
 
   public getEtype(): string {
+    console.log("check etype");
+    console.log(this.eType);
     return this.eType;
   }
 

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { AuthService } from 'src/app/core/service/services';
 
 @Component({
   selector: 'vibe-sidebar',
@@ -9,10 +10,10 @@ import { Router } from '@angular/router';
 export class SidebarComponent implements OnInit {
 
   isAuthenticated: boolean;
-
+  
   isLoggedIn: boolean = true;
 
-  constructor( public router: Router) {
+  constructor( public router: Router,  private authenticationService: AuthService) {
     
    }
 
@@ -22,10 +23,27 @@ export class SidebarComponent implements OnInit {
 
   async logout() {
     // Terminates the session with Okta and removes current tokens.
-    this.router.navigateByUrl('/login');
+    this.authenticationService.logout()
+    .subscribe(
+      data => {
+        console.log(data);
+        this.router.navigate(['login']);
+      },
+      error => {
+        console.log(error);
+      }
+    )
   }
 
   print(){
     console.log("Home cliked")
+  }
+
+  notOnPortalScreen() {
+    return window.location.pathname != "/portal";
+  }
+
+  back() {
+    window.history.back();
   }
 }

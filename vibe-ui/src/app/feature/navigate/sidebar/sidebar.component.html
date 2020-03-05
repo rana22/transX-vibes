@@ -35,12 +35,12 @@
 
   <i style="cursor: pointer" class="material-icons app-toolbar-menu" (click)="sidenav.toggle()">menu</i>
 
+  <span *ngIf="notOnPortalScreen() && isLoggedIn" class="toolbar-space-between"></span>
+
+  <i *ngIf="notOnPortalScreen() && isLoggedIn" style="cursor: pointer" class="material-icons keyboard_arrow_left" (click)="back();">keyboard_arrow_left</i>
+
   <span class="toolbar-space-between"></span>
 
-  <i style="cursor: pointer" class="material-icons keyboard_arrow_left" >keyboard_arrow_left</i>
-
-  <span class="toolbar-space-between"></span>
-
-  <i *ngIf="isLoggedIn" style="cursor: pointer" class="material-icons home" routerLink="portal">home</i>
+  <i *ngIf="isLoggedIn" style="cursor: pointer" class="material-icons home" routerLink="portal/dashboard">home</i>
 
 </mat-toolbar>

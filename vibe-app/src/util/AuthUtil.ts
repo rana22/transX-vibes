@@ -22,6 +22,7 @@ class AuthUtil {
     init() {
         console.log("from init AuthUtil 1");
         Passport.use(new Bearer.Strategy((token, done) => {
+            console.log("from init AuthUtil 4");
             this._authService.findOne({
                 where: {
                     token: token
@@ -46,9 +47,11 @@ class AuthUtil {
         server.exchange(OAuth2orize.exchange.password((user, username, password, scope, done) => {
             this._userService.authenticateUser(username, password)
                 .then((result) => {
+                    console.log("check for the auth 1");
                     user = <User>result;
                     Token.findOne({ where: { userId: user.id } })
                         .then((token) => {
+                            console.log("check for the auth 2");
                             if (token) {
                                 done(null, token.token, null, { user: user });
                             } else {

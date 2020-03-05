@@ -21,7 +21,7 @@ export class AuthService {
     }
 
     login(username: string, password: string): Observable<any> {
-      let url = this.apiHelper.getServiceName() + ConstantMan.API.RESOURCE.LOGIN;
+      let url = this.apiHelper.getServiceName()+ "auth/" + ConstantMan.API.RESOURCE.LOGIN;
       let method = "POST";
       var header: HttpHeaders = this.apiHelper.getDefaultHeader();
 
@@ -58,7 +58,7 @@ export class AuthService {
     }
 
     logout(): Observable<any> {
-      let url = this.apiHelper.getServiceName() + ConstantMan.API.RESOURCE.LOGOUT;
+      let url = this.apiHelper.getServiceName()+ "auth/" +ConstantMan.API.RESOURCE.LOGOUT;
       let method = "POST";
       var header: HttpHeaders = this.apiHelper.getDefaultHeader();
 
@@ -79,10 +79,11 @@ export class AuthService {
             authSvc.loggedInSource.next(authSvc.loggedIn);
           },
           error => {
+            console.log("error obserable");
+            console.log(error);
             observer.error(error);
           });
       });
-
       return observable;
     }
 

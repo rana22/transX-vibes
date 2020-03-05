@@ -4,7 +4,7 @@ export class Constant {
 
     public static API = {
         BASE: {
-          LOCAL   : 'http://localhost:9090/',
+          LOCAL   : 'http://localhost:3000/app/v1/',
           //TODO Update to ts-node-seed DEV / STAGE locations
           DEV    : 'dev',
           PROD   : 'prod'
