@@ -1,6 +1,6 @@
 import {Entity, EntityManager, EntityState, EntityManagerConfig, EntityQuery, EntityType} from 'breeze-client';
 
-export class ExtendedManager extends  EntityManager {
+export class ExtendedManager extends EntityManager {
 
   constructor(config?: EntityManagerConfig | any) {
     super(config);
@@ -26,7 +26,10 @@ export class ExtendedManager extends  EntityManager {
   * @returns {Object} Entity
   */
   public createEntityFromServer(eType:string, initialVals: Object) : Entity {
+    console.log(this.queryOptions);
     var mergeStrategy = this.queryOptions.mergeStrategy;
+    console.log(eType);
+    
     return this.createEntity(eType, initialVals, EntityState.Unchanged, mergeStrategy);
   }
 

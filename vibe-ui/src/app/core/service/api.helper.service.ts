@@ -116,7 +116,7 @@ export class ApiHelper {
           that.handleApiError(error);
           observer.error(error);
         });
-    }).share();
+    });
 
     this.setBusy(observable);
 
@@ -124,6 +124,7 @@ export class ApiHelper {
   }
 
   public handleApiError(apiError) {
+    console.log("hoandle Api Error");
     console.log(apiError);
     if (apiError.hasOwnProperty('status')) {
       switch (apiError.status) {
@@ -133,7 +134,7 @@ export class ApiHelper {
             title: "Unauthorized",
             message: "Please try logging in again."
           });
-          // this.router.navigate(['/login']);
+          this.router.navigate(['/login']);
           break;
         case 403:
           console.log('Forbidden');
@@ -142,7 +143,7 @@ export class ApiHelper {
               title: "Login Failed",
               message: "The username / password combination was invalid."
             });
-            // this.router.navigate(['/login']);
+            this.router.navigate(['/login']);
           } else if (apiError.url.includes('reset')) {
             this.setApiError({
               title: "Token Expired",
@@ -179,6 +180,7 @@ export class ApiHelper {
   }
 
   public setAccessToken(token: string) {
+    console.log(token)
     this.accessToken = token;
     window.localStorage.setItem('accessToken', token);
   }

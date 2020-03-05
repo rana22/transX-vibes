@@ -1,10 +1,10 @@
 
 import { HttpClient, HttpResponse, HttpHeaders } from '@angular/common/http';
 import { Injectable, Injector } from '@angular/core';
-import { MergeStrategy, QueryOptions, config, DataService} from 'breeze-client';
+import { MergeStrategy, QueryOptions, config, DataService, BaseAdapter} from 'breeze-client';
 import { AjaxHttpClientAdapter } from 'breeze-client/adapter-ajax-httpclient';
-// import { JsonResultsAdaptor } from "./jsonResultsAdaptor";
-// import { RegistrationHelper } from '../models/registration-helper';
+import { JsonResultsAdaptor } from "./jsonResultsAdaptor";
+import { RegistrationHelper } from '../models/registration-helper';
 import { ExtendedManager } from './extendedManager';
 import { ConstantMan } from "./constantMan";
 import { environment } from "../../../environments/environment";
@@ -22,7 +22,8 @@ export class EntityManagerFactory {
   private masterManager: ExtendedManager;
   private ds : DataService;
 
-  constructor(private http : HttpClient, private apiHelper: ApiHelper
+  constructor(private http : HttpClient, private apiHelper: ApiHelper, private jsonAdaptor:JsonResultsAdaptor,
+    private registrationHelper:RegistrationHelper
               ) {
                 ModelLibraryBackingStoreAdapter.register();
                 UriBuilderODataAdapter.register();
@@ -41,9 +42,8 @@ export class EntityManagerFactory {
       request.request.headers = apiHelper.getDefaultHeader();
       return request;
     };
-    // config.registerAdapter('ajax', () => AdapterCtor);
+    config.registerAdapter('ajax', function() {return ajaxAdaptor} as any);
     config.initializeAdapterInstance('ajax', ajaxAdaptor.name, true);
-
     //TODO figure out dependency order
     if(!this.apiHelper.getServiceName()) {
       this.apiHelper.setEnvironment(environment.envName);
@@ -52,13 +52,12 @@ export class EntityManagerFactory {
     this.ds = new DataService({
       serviceName: this.apiHelper.getServiceName(),
       hasServerMetadata: false,
-      // jsonResultsAdapter: this.jsonAdaptor
+      jsonResultsAdapter: this.jsonAdaptor
     });
 
     console.log(this.ds.serviceName);
 
     this.masterManager = this.createMasterManger();
-
     this.managersMap.forEach((manager:ExtendedManager, name:string) =>{
       var newMgr = this.masterManager.createEmptyCopy();
     });
@@ -68,16 +67,19 @@ export class EntityManagerFactory {
   }
 
   private createMasterManger() : ExtendedManager {
+    console.log(this.ds.jsonResultsAdapter);
     var newMasterManager: ExtendedManager = new ExtendedManager({dataService: this.ds});
+    console.log("get new MasterManager !!");
     newMasterManager = this.setQueryOptions(false, newMasterManager);
     console.log(newMasterManager);
-    // this.registrationHelper.register(newMasterManager.metadataStore);
+    this.registrationHelper.register(newMasterManager.metadataStore);
 
     return newMasterManager;
   }
 
   private setQueryOptions(includeDeleted:boolean, manager: ExtendedManager) : ExtendedManager{
     var newQo: QueryOptions = new QueryOptions();
+    console.log("check for .mergeStrategy");
     newQo.mergeStrategy = MergeStrategy.OverwriteChanges;
     newQo.includeDeleted = includeDeleted;
     manager.setProperties({queryOptions:newQo});

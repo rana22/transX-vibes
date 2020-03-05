@@ -20,7 +20,7 @@ import { AuthInterceptor } from './shared/auth/auth.interceptor';
 import { environment } from 'src/environments/environment';
 import { SharedModule } from './shared/shared.module';
 import { ServiceModule } from './service/service.module';
-
+import { BreezeBridgeHttpClientModule } from 'breeze-bridge2-angular';
 
 // const oktaConfig = {
 //   issuer: environment.okta.url,
@@ -44,6 +44,7 @@ import { ServiceModule } from './service/service.module';
     CoreModule,
     MaterialModule,
     BrowserAnimationsModule,
+    BreezeBridgeHttpClientModule,
     NgBusyModule,
     FlexLayoutModule,
     SharedModule,

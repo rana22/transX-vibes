@@ -20,8 +20,10 @@ export function AuthControllerFactory(container: Container){
                 console.log("test")
             }
     
-            @httpPost('/logout')
+            @httpPost('/logout', container.get<e.RequestHandler>('Authenticate'))
             public logout(req: e.Request, res: e.Response): any {
+                console.log("test check logout !!!");
+                return "logout"
             }
     
             @httpGet('/session')

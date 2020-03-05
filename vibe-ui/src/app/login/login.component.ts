@@ -1,6 +1,6 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { Router, NavigationStart } from '@angular/router';
-import { ApiHelper } from '../core/service/services';
+import { ApiHelper, AuthService } from '../core/service/services';
 import { FormConfig, FormField } from '../shared/form/model/form-fields';
 import { Validators } from '@angular/forms';
 import { FormStyleCofig } from '../shared/form/model/form.style.model';
@@ -20,7 +20,8 @@ export class LoginComponent implements OnInit {
   formStyle : FormStyleCofig = new FormStyleCofig();
 
   constructor(private apiHelper:ApiHelper,
-               route: Router,
+               private router: Router,
+               private authenticationService: AuthService,
                private http: HttpService) {
   }
 
@@ -78,18 +79,20 @@ export class LoginComponent implements OnInit {
   submit(value){
     var authSvc = this;
     console.log(value);
-    this.http.login(value)
+
+      this.authenticationService.login(value.username, value.password)
       .subscribe(
-        (res: any)=>{
-          let user = res.user;
-          let token = res.access_token;
-          authSvc.apiHelper.setAccessToken(token);
+        data => {
+          console.log(data);
+          this.router.navigate(['portal']);
         },
-        err =>{
-          console.log(err)
-        }
-      )
+        error => {
+          this.router.navigate(['portal']);
+          console.log("login failed");
+        });
 
   }
+
+
 
 }

@@ -4,7 +4,7 @@ import {HttpClient, HttpHeaders} from '@angular/common/http';
 import { Observable } from 'rxjs/Observable';
 import { ConstantMan } from '../constantMan'
 import { ApiHelper } from '../api.helper.service';
-import {Entity, EntityQuery, QueryResult, EntityState, Predicate, QueryOptions} from 'breeze-client';
+import {Entity, EntityQuery, QueryResult, EntityState, Predicate, QueryOptions, EntityType} from 'breeze-client';
 import {EntityManagerFactory} from "../entityManagerFactory";
 import {Role} from "../../models/role";
 
@@ -16,12 +16,12 @@ export class RoleDAO extends BaseDAO {
   }
 
   public getAllRolesForUserId(userId:number) : Role[] {
+    console.log("get all roles for user id !!1");
     let predicate:Predicate = Predicate.create("userRoleMap", "any", "userId", "==", userId);
     let query:EntityQuery = EntityQuery
       .from(this.getEtype())
       .where(predicate)
       .expand("userRoleMap");
-
     return this.manager.executeQueryLocally(query) as Role[];
   }
 

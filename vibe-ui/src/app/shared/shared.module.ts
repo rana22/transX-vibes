@@ -3,7 +3,6 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 import { AgGridModule } from "ag-grid-angular";
-
 /**
  * Do not specify providers for modules that might be imported by a lazy loaded module.
  */
@@ -14,8 +13,7 @@ import { AgGridModule } from "ag-grid-angular";
     RouterModule,
     AgGridModule.withComponents([])
   ],
-  declarations: [
-  ],
+  declarations: [],
   exports: [
     CommonModule,
     FormsModule,
