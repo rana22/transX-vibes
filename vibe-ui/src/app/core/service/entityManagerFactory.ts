@@ -54,9 +54,6 @@ export class EntityManagerFactory {
       hasServerMetadata: false,
       jsonResultsAdapter: this.jsonAdaptor
     });
-
-    console.log(this.ds.serviceName);
-
     this.masterManager = this.createMasterManger();
     this.managersMap.forEach((manager:ExtendedManager, name:string) =>{
       var newMgr = this.masterManager.createEmptyCopy();
@@ -67,11 +64,8 @@ export class EntityManagerFactory {
   }
 
   private createMasterManger() : ExtendedManager {
-    console.log(this.ds.jsonResultsAdapter);
     var newMasterManager: ExtendedManager = new ExtendedManager({dataService: this.ds});
-    console.log("get new MasterManager !!");
     newMasterManager = this.setQueryOptions(false, newMasterManager);
-    console.log(newMasterManager);
     this.registrationHelper.register(newMasterManager.metadataStore);
 
     return newMasterManager;

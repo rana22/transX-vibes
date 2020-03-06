@@ -72,15 +72,12 @@ export class AuthService {
           data => {
             authSvc.apiHelper.setAccessToken(null);
             authSvc.apiHelper.removeAccessToken();
-            console.log(data);
             observer.next(data);
             observer.complete();
             authSvc.loggedIn = false;
             authSvc.loggedInSource.next(authSvc.loggedIn);
           },
           error => {
-            console.log("error obserable");
-            console.log(error);
             observer.error(error);
           });
       });
@@ -100,7 +97,6 @@ export class AuthService {
       var observable = Observable.create(function subscribe(observer) {
         httpRequest.subscribe(
           data => {
-            console.log(data);
             observer.next(data);
             authSvc.userDAO.setCurrentUser(data as User);
             observer.complete();

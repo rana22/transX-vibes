@@ -80,7 +80,6 @@ export class UserDAO extends BaseDAO {
   }
 
   private clearMap() {
-    console.log("clear map")
     let entities:Entity[] = this.manager.getEntities("UserRoleMap");
     entities.forEach((entity)=>{
       this.manager.detachEntity(entity);

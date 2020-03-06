@@ -26,7 +26,6 @@ export class SidebarComponent implements OnInit {
     this.authenticationService.logout()
     .subscribe(
       data => {
-        console.log(data);
         this.router.navigate(['login']);
       },
       error => {
@@ -36,7 +35,6 @@ export class SidebarComponent implements OnInit {
   }
 
   print(){
-    console.log("Home cliked")
   }
 
   notOnPortalScreen() {

@@ -16,7 +16,6 @@ export class RoleDAO extends BaseDAO {
   }
 
   public getAllRolesForUserId(userId:number) : Role[] {
-    console.log("get all roles for user id !!1");
     let predicate:Predicate = Predicate.create("userRoleMap", "any", "userId", "==", userId);
     let query:EntityQuery = EntityQuery
       .from(this.getEtype())

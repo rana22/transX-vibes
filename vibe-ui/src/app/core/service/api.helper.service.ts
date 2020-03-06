@@ -73,11 +73,9 @@ export class ApiHelper {
 
   public getDefaultHeader(): HttpHeaders {
     let headers: HttpHeaders = new HttpHeaders({ 'Content-Type': 'application/json' });
-    // if (!this.getAccessToken()) {
-    //   console.log("no bear");
-    //   return headers;
-    // }
-    console.log("bear");
+    if (!this.getAccessToken()) {
+      return headers;
+    }
     headers.set('Authorization', 'Bearer ' + this.getAccessToken());
     return headers;
   }
@@ -124,12 +122,9 @@ export class ApiHelper {
   }
 
   public handleApiError(apiError) {
-    console.log("hoandle Api Error");
-    console.log(apiError);
     if (apiError.hasOwnProperty('status')) {
       switch (apiError.status) {
         case 401:
-          console.log('Unauthorized');
           this.setApiError({
             title: "Unauthorized",
             message: "Please try logging in again."
@@ -137,7 +132,6 @@ export class ApiHelper {
           this.router.navigate(['/login']);
           break;
         case 403:
-          console.log('Forbidden');
           if (apiError.url.includes('login')) {
             this.setApiError({
               title: "Login Failed",
@@ -159,7 +153,6 @@ export class ApiHelper {
           }
           break;
         case 404:
-          console.log("Not Found");
           this.setApiError({
             title: "404",
             message: "Page not found."
@@ -180,7 +173,6 @@ export class ApiHelper {
   }
 
   public setAccessToken(token: string) {
-    console.log(token)
     this.accessToken = token;
     window.localStorage.setItem('accessToken', token);
   }
@@ -200,7 +192,6 @@ export class ApiHelper {
   }
 
   public setApiError(apiError) {
-    console.log(apiError);
     this.apiErrorSource.next(apiError);
   }
 

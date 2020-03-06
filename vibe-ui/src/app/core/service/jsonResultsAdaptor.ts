@@ -17,10 +17,8 @@ export class JsonResultsAdaptor extends JsonResultsAdapter {
         var mehta : any = parseContext;
         if(node != null && node.hasOwnProperty("$type")){
           var entity:EntityBase = node as EntityBase;
-          console.log("return entity");
           return {entityType: mehta.entityManager.metadataStore.getEntityType(entity.$type) as EntityType};
         }
-        console.log("return null");
         return null;
       }
     });
