@@ -77,15 +77,13 @@ export class LoginComponent implements OnInit {
   ];
 
   submit(value){
-    var authSvc = this;
-
       this.authenticationService.login(value.username, value.password)
       .subscribe(
         data => {
-          this.router.navigate(['portal']);
+          this.router.navigate(['portal/dashboard']);
         },
         error => {
-          this.router.navigate(['portal']);
+          this.router.navigate(['login']);
         });
 
   }
