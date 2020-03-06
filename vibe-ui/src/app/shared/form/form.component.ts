@@ -29,7 +29,6 @@ export class FormComponent implements OnInit {
   }
 
   submit(formvalue){
-    console.log(formvalue);
     this.submitForm.emit(formvalue);
   }
   

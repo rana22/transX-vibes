@@ -43,14 +43,14 @@ export class Role extends EntityBase {
             ],
             navigationProperties: [
                 new NavigationProperty(<NavigationPropertyConfig>{
-                    entityTypeName: "UserRoleMap:#TXV",
+                    entityTypeName: "UserRoleMap:#TDK",
                     associationName: "UserRoleMap_Role",
                     name: "userRoleMap",
                     isScalar: false,
                     invForeignKeyNames: ["roleId"]
                 }),
                 new NavigationProperty(<NavigationPropertyConfig>{
-                    entityTypeName: "RolePermissionMap:#TXV",
+                    entityTypeName: "RolePermissionMap:#TDK",
                     associationName: "RolePermissionMap_Role",
                     name: "rolePermissionMap",
                     isScalar: false,
