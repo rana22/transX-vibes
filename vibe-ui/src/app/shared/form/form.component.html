@@ -1,17 +1,14 @@
 <div class="row">
   <div [ngClass]="formStyle.width">
-  <mat-card class="form-card">
-    <mat-card-title class="text-center" id="form-title">
-      {{formFieldConfig.title}}
-    </mat-card-title>
-    <hr>
-    <app-dynamic-form [fields]="formFieldConfig.formFields" (submit)="submit($event)">
-    </app-dynamic-form>
+    <mat-card class="form-card">
+      <mat-card-title class="text-center" id="form-title">
+        {{formFieldConfig.title}}
+      </mat-card-title>
+      <hr>
+      <app-dynamic-form [fields]="formFieldConfig.formFields" (submit)="submit($event)">
+      </app-dynamic-form>
 
-    <br><br>
-    <div class="margin-top">
-      {{ form.value | json }}
-    </div>
-  </mat-card>
+      <br><br>
+    </mat-card>
   </div>
 </div>

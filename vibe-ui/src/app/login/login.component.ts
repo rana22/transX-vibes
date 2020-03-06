@@ -38,6 +38,7 @@ export class LoginComponent implements OnInit {
       label: "Username",
       inputType: "text",
       name: "username",
+      value: "",
       validations: [
         {
           name: "required",
@@ -56,6 +57,7 @@ export class LoginComponent implements OnInit {
       label: "Password",
       inputType: "password",
       name: "password",
+      value: "",
       validations: [
         {
           name: "required",
@@ -70,22 +72,20 @@ export class LoginComponent implements OnInit {
       label: "Login",
     },
     {
-      action: "cancel",
+      action: "reset",
       type: "button",
       label: "Cancel"
     }
   ];
 
   submit(value){
-    var authSvc = this;
-
       this.authenticationService.login(value.username, value.password)
       .subscribe(
         data => {
-          this.router.navigate(['portal']);
+          this.router.navigate(['portal/dashboard']);
         },
         error => {
-          this.router.navigate(['portal']);
+          this.router.navigate(['login']);
         });
 
   }
