@@ -1,0 +1,22 @@
+<div fxLayout="row">
+    <mat-form-field fxFlex>
+      <input
+        type="search"
+        matInput name="formName"
+        id="autocomplete.{{formName}}"
+        [(ngModel)]="input.value"
+        [matAutocomplete]="auto"
+        [formControl]="formCtrl"
+        placeholder={{placeholder}}
+        (blur)="clearIfNull()"
+        [required]="isRequired"
+        (ngModelChange)="valueChanged()">
+
+    <mat-autocomplete type="search" #auto="matAutocomplete">
+      <mat-option (onSelectionChange)="onOptionSelect(option)" *ngFor="let option of filteredData | async" [value]="option[displayField]">
+        {{ option[displayField] }}
+      </mat-option>
+    </mat-autocomplete>
+
+    </mat-form-field>
+</div>

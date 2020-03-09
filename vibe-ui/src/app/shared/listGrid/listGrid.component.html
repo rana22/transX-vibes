@@ -1,0 +1,12 @@
+<mat-toolbar color="accent">
+    <button *ngIf="allowExport" md-raised-button color="primary" (click)="exportToCSV()">
+        Export CSV <mat-icon>launch</mat-icon>
+    </button>
+    <span class="tdk-spacer"></span>
+    <mat-form-field>
+        <input matInput (keyup)="onQuickFilterChanged($event)" type="search" id="quickFilterInput"
+            placeholder="Search" />
+    </mat-form-field>
+</mat-toolbar>
+<ag-grid-angular #agGrid class="grid-size ag-material" [gridOptions]="gridOptions">
+</ag-grid-angular>

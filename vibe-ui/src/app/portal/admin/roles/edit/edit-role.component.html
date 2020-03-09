@@ -1,0 +1,14 @@
+<mat-card class="centered-card">
+
+  <mat-card-title>
+    Edit Role
+  </mat-card-title>
+
+  <tdk-role-form
+    [role]="model"
+    [rolePermissions]="rolePermissions"
+    (onCancelled)="onCancelled()"
+    (onSubmitted)="onSubmitted($event)">
+  </tdk-role-form>
+
+</mat-card>

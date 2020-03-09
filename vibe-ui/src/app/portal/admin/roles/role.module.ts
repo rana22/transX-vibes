@@ -1,14 +1,38 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { RoleComponent } from './role.component';
-import { AddComponent } from './add/add.component';
-import { UpdateComponent } from './update/update.component';
-import { FormComponent } from './form/form.component';
+import { RoleComponent } from "./role.component";
+import { RoleRoutingModule } from "./role-routing.module";
+import { FormsModule } from "@angular/forms";
+import { RoleResolve } from "./role.resolve";
+import { AgGridModule } from "ag-grid-angular";
+import { EditRoleModule } from "./edit/edit-role.module";
+import { SharedModule } from "../../../shared/shared.module";
+import { MaterialModule } from 'src/app/material.module';
+import { AddRoleModule } from './add/add.role.module';
+import { ListGridComponent } from 'src/app/shared/listGrid/listGrid.component';
 
 @NgModule({
-  declarations: [RoleComponent, AddComponent, UpdateComponent, FormComponent],
   imports: [
-    CommonModule
+    CommonModule,
+    RoleRoutingModule,
+    FormsModule,
+    MaterialModule,
+    SharedModule,
+    AgGridModule.withComponents([
+      ListGridComponent
+    ]),
+    AddRoleModule,
+    EditRoleModule
+  ],
+  declarations: [
+    RoleComponent
+  ],
+  exports: [
+    RoleComponent
+  ],
+  providers: [
+    RoleResolve
   ]
 })
 export class RoleModule { }
+

@@ -1,3 +1,15 @@
-<p>
-  role works!
-</p>
+<mat-card class="portal-card">
+
+  <mat-toolbar color="accent">
+    <span>Roles</span>
+    <span class="tdk-spacer"></span>
+    <button mat-raised-button  routerLink="add" color="primary">
+      Add New <mat-icon>add_box</mat-icon>
+    </button>
+  </mat-toolbar>
+
+  <list-grid [columnDefs]="columnDefs" [rowData]="rowData" [editPath]="editPath"></list-grid>
+
+</mat-card>
+
+

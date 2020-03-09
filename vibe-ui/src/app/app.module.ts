@@ -21,6 +21,9 @@ import { environment } from 'src/environments/environment';
 import { SharedModule } from './shared/shared.module';
 import { ServiceModule } from './service/service.module';
 import { BreezeBridgeHttpClientModule } from 'breeze-bridge2-angular';
+import { ErrorDialogModule } from './shared/errorDialog/errorDialog.module';
+import { AgGridModule } from 'ag-grid-angular';
+import { ListGridComponent } from './shared/listGrid/listGrid.component';
 
 // const oktaConfig = {
 //   issuer: environment.okta.url,
@@ -48,7 +51,11 @@ import { BreezeBridgeHttpClientModule } from 'breeze-bridge2-angular';
     NgBusyModule,
     FlexLayoutModule,
     SharedModule,
-    ServiceModule
+    ServiceModule,
+    ErrorDialogModule,
+    AgGridModule.withComponents([
+      ListGridComponent
+    ]),
   ],
   providers: [
     ApiHelper
