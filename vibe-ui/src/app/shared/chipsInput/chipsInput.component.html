@@ -1,0 +1,28 @@
+<div>
+
+  <div class="tdk-full-width">
+    <auto-complete #autocomplete [(model)]="input"
+                   class="tdk-full-width"
+                   modelValueField="value"
+                   [(selectionData)]="selectionData"
+                   [placeholder]="placeholder"
+                   [formName]="formName"
+                   [displayField]="displayField"
+                   [valueField]="modelField"
+                   (onOptionSelected)="onSelect($event, autocomplete)"
+    ></auto-complete>
+  </div>
+
+  <div>
+    <mat-chip-list>
+      <mat-chip *ngFor="let data of model; let i=index" [selected]="true">
+        <label>{{data[displayField]}}
+          <button type="button" mat-button class="chip-button" (click)="remove(i)"><mat-icon>clear</mat-icon></button>
+        </label>
+      </mat-chip>
+    </mat-chip-list>
+  </div>
+
+</div>
+
+

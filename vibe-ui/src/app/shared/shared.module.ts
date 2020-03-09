@@ -3,6 +3,12 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 import { AgGridModule } from "ag-grid-angular";
+import { ListGridComponent } from './listGrid/listGrid.component';
+import { EditButtonComponent } from './listGrid/editButton/editButton.component';
+import { MaterialModule } from '../material.module';
+import { ChipsInputModule } from './chipsInput/chipsInput.module';
+import { AutoCompleteModule } from './autoComplete/autoComplete.module';
+import { PortalLinkTileModule } from './portalLinkTile/portalLinkTile.module';
 /**
  * Do not specify providers for modules that might be imported by a lazy loaded module.
  */
@@ -11,16 +17,35 @@ import { AgGridModule } from "ag-grid-angular";
   imports: [
     CommonModule,
     RouterModule,
-    AgGridModule.withComponents([])
+    MaterialModule,
+    AgGridModule.withComponents([
+      ListGridComponent,
+      EditButtonComponent
+    ]),
+    ChipsInputModule,
+    AutoCompleteModule,
+    PortalLinkTileModule
   ],
-  declarations: [],
+  declarations: [
+    ListGridComponent,
+    EditButtonComponent
+  ],
   exports: [
     CommonModule,
     FormsModule,
-    RouterModule
+    RouterModule,
+    ListGridComponent,
+    ChipsInputModule,
+    AutoCompleteModule,
+    PortalLinkTileModule
   ]
 })
 
 export class SharedModule {
-
+  static forRoot(): ModuleWithProviders {
+    return {
+      ngModule: SharedModule,
+      providers: []
+    };
+  }
 }

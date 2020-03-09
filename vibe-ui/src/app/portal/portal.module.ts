@@ -10,6 +10,8 @@ import { PortalLinkTileComponent } from './components/dashboard/portalLinkTile/p
 import { MaterialModule } from '../material.module';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { FormModule } from '../shared/form/form.module';
+import { RoleModule } from './admin/roles/role.module';
+import { AdminModule } from './admin/admin.module';
 
 @NgModule({
   declarations: [
@@ -25,7 +27,9 @@ import { FormModule } from '../shared/form/form.module';
     PortalComponentModule,
     MaterialModule,
     FlexLayoutModule,
-    FormModule
+    FormModule,
+    RoleModule,
+    AdminModule
   ]
 })
 export class PortalModule { }
