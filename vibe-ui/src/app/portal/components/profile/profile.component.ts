@@ -235,5 +235,9 @@ export class ProfileComponent implements OnInit {
   //     label: "Cancel"
   //   }
   // ];
+
+  submit(value: any){
+    
+  }
 }
 

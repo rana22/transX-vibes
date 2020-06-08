@@ -25,4 +25,7 @@ import { EditUserComponent } from './user-edit.component';
   providers: [
   ]
 })
-export class EditUserModule { }
+export class EditUserModule { 
+
+  invokeEdit(){}
+}

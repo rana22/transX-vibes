@@ -18,7 +18,7 @@ export class EditButtonComponent implements AgRendererComponent {
   this.params = params;
   }
 
-  public invokeEdit(e) {
+  public invokeEdit() {
     this.params.context.componentParent.onActionViewClick(this.params.data);
   }
 

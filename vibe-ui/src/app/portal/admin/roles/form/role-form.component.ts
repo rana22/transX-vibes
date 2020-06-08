@@ -43,4 +43,13 @@ export class RoleFormComponent implements OnInit {
   ngOnInit() {
   }
 
+  submit(){
+    
+  }
+
+  cancel(){
+
+  }
+  onSubmit(){}
+
 }
