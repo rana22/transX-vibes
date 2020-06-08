@@ -4,7 +4,7 @@ import { LoginComponent } from './login/login.component';
 
 const routes: Routes = [
   {path: 'login', component: LoginComponent},
-  {path: 'portal', loadChildren: './portal/portal.module#PortalModule'},
+  {path: 'portal', loadChildren: () => import('./portal/portal.module').then(m => m.PortalModule)},
 ];
 
 @NgModule({

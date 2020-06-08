@@ -10,7 +10,7 @@ import { environment } from 'src/environments/environment';
 export class AppComponent implements OnInit {
   title = 'client';
   isAuthenticated: boolean;
-
+  busy : any ='';
   constructor(private apiHelper : ApiHelper) {
       var self = this;
   }

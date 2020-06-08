@@ -14,7 +14,7 @@ export class FormComponent implements OnInit {
 
   public fields : FormField[];
 
-  @ViewChild(DynamicFormComponent) form: DynamicFormComponent;
+  @ViewChild(DynamicFormComponent, { static: true }) form: DynamicFormComponent;
 
   @Input("formFieldConfig") formFieldConfig : FormConfig;
   @Input("formStyle") formStyle : FormStyleCofig;

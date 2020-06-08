@@ -24,7 +24,8 @@ import { BreezeBridgeHttpClientModule } from 'breeze-bridge2-angular';
 import { ErrorDialogModule } from './shared/errorDialog/errorDialog.module';
 import { AgGridModule } from 'ag-grid-angular';
 import { ListGridComponent } from './shared/listGrid/listGrid.component';
-
+import { ExampleModule } from './exmaple/example.module';
+import {TranslateModule} from '@ngx-translate/core';
 // const oktaConfig = {
 //   issuer: environment.okta.url,
 //   clientId: environment.okta.clientId,
@@ -56,6 +57,8 @@ import { ListGridComponent } from './shared/listGrid/listGrid.component';
     AgGridModule.withComponents([
       ListGridComponent
     ]),
+    TranslateModule.forRoot(),
+    ExampleModule
   ],
   providers: [
     ApiHelper

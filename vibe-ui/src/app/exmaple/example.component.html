@@ -1,0 +1,31 @@
+ <div class="example-container container">
+  <h4>form controller</h4>
+  <form [formGroup]="arForm" novalidate>
+    <div class="form-group">
+      <label for="firstName" id="firstName" [innerHTML]="'First Name'|translate"></label>
+      <input aria-labelledby="firstName" type="text" formControlName="firstName" maxlength="50" data-field="firstName"
+        name="firstName">
+    </div>
+
+    <div class="pull-left btn-row">
+     
+      <button  type="submit" (click)="submit()" class="btn_express bottom-left" [innerHTML]="'Submit'|translate"></button>
+
+      <!-- <button (click)="submitAr()" class="btn_primary bottom-right">Open Id Proofing</button> -->
+    </div>
+
+    <div class="input-group">
+      <input class="form-control" placeholder="Select a date" angular-mydatepicker name="reactiveFormsDate" formControlName="myDate"
+             [options]="myDatePickerOptions" #dp="angular-mydatepicker" autocomplete="off"/>
+      
+      <div class="input-group-append">
+        <button type="button" class="btn btn-secondary" (click)="dp.toggleCalendar()">
+          <i class="fa fa-calendar-o"></i>
+        </button>
+      </div>
+    </div>
+
+
+  </form>
+
+</div> 
