@@ -12,6 +12,7 @@ import { FlexLayoutModule } from '@angular/flex-layout';
 import { FormModule } from '../shared/form/form.module';
 import { RoleModule } from './admin/roles/role.module';
 import { AdminModule } from './admin/admin.module';
+import { PortalResolve } from './portal.resolve';
 
 @NgModule({
   declarations: [
@@ -30,6 +31,9 @@ import { AdminModule } from './admin/admin.module';
     FormModule,
     RoleModule,
     AdminModule
+  ],
+  providers: [
+    PortalResolve
   ]
 })
 export class PortalModule { }

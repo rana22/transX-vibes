@@ -7,15 +7,25 @@ import ServiceModule = require('./service/ServiceModule');
 var cors = require("cors");
 import Middleware = require("./config/BaseMiddleware");
 import ControllerModule = require('./controller/ControllersModule');
+
+import Passport = require("passport");
+import * as express from 'express';
+import bodyParser = require('body-parser');
 import AuthUtil = require('./util/AuthUtil');
 import PermissionUtil = require('./util/PermissionUtil');
-const passport = require('passport');
-import * as express from 'express';
-import Passport = require("passport");
-import bodyParser = require('body-parser');
 let container = new Container();
 
 container.bind<express.RequestHandler>('Authenticate').toConstantValue(Passport.authenticate(['bearer'], { session: false }));
+container.bind<express.RequestHandler>('Permissions').toConstantValue((req: express.Request, res: express.Response, next: Function) => {
+    permission.checkUserPermission(req.baseUrl,req.route.path,req.method, req.user).then(function (accessResult) {
+        if(!accessResult) {
+            res.statusCode = 403;
+            return res.end('Forbidden');
+        }
+        return next();
+    });
+
+});
 container.bind<express.RequestHandler>('Oauth').toConstantValue(AuthUtil.server.token());
 container.bind('OauthError').toConstantValue(AuthUtil.server.errorHandler());
 let middleware = require('./middleware');
@@ -37,7 +47,7 @@ server.setConfig((app) => {
     app.use(cors());
     app.use(bodyParser.json());
     app.use(Middleware.configuration);
-    app.use(passport.initialize());
+    app.use(Passport.initialize());
 });
 
 let app = server.build();
