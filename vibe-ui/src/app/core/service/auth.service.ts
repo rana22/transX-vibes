@@ -85,6 +85,7 @@ export class AuthService {
     }
 
     checkSession(): Observable<any> {
+      console.log("check session !!");
       let url = this.apiHelper.getServiceName() + ConstantMan.API.RESOURCE.SESSION;
       let method = "GET";
       var header: HttpHeaders = this.apiHelper.getDefaultHeader();

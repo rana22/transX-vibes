@@ -120,7 +120,7 @@ export class ProfileComponent implements OnInit {
     {
       type: "input",
       label: "Email",
-      inputType: "text",
+      inputType: "email",
       name: "email",
       value: model.email,
       validations: [
@@ -131,7 +131,7 @@ export class ProfileComponent implements OnInit {
         },
         {
           name: "pattern",
-          validator: Validators.pattern("^[a-zA-Z]+$"),
+          validator: Validators.email,
           message: "Accept only text"
         }
       ]
@@ -150,94 +150,24 @@ export class ProfileComponent implements OnInit {
    return profileConfig;
   }
 
-
-  // profileConfig: FormField[] = [
-  //   {
-  //     type: "input",
-  //     label: "Username",
-  //     inputType: "text",
-  //     name: "name",
-  //     validations: [
-  //       {
-  //         name: "required",
-  //         validator: Validators.required,
-  //         message: "Name Required"
-  //       },
-  //       {
-  //         name: "pattern",
-  //         validator: Validators.pattern("^[a-zA-Z]+$"),
-  //         message: "Accept only text"
-  //       }
-  //     ]
-  //   },
-  //   {
-  //     type: "input",
-  //     label: "First Name",
-  //     inputType: "text",
-  //     name: "fname",
-  //     validations: [
-  //       {
-  //         name: "required",
-  //         validator: Validators.required,
-  //         message: "Name Required"
-  //       },
-  //       {
-  //         name: "pattern",
-  //         validator: Validators.pattern("^[a-zA-Z]+$"),
-  //         message: "Accept only text"
-  //       }
-  //     ]
-  //   },
-  //   {
-  //     type: "input",
-  //     label: "Last Name",
-  //     inputType: "text",
-  //     name: "lname",
-  //     validations: [
-  //       {
-  //         name: "required",
-  //         validator: Validators.required,
-  //         message: "Name Required"
-  //       },
-  //       {
-  //         name: "pattern",
-  //         validator: Validators.pattern("^[a-zA-Z]+$"),
-  //         message: "Accept only text"
-  //       }
-  //     ]
-  //   },
-  //   {
-  //     type: "input",
-  //     label: "Email",
-  //     inputType: "text",
-  //     name: "email",
-  //     validations: [
-  //       {
-  //         name: "required",
-  //         validator: Validators.required,
-  //         message: "Name Required"
-  //       },
-  //       {
-  //         name: "pattern",
-  //         validator: Validators.pattern("^[a-zA-Z]+$"),
-  //         message: "Accept only text"
-  //       }
-  //     ]
-  //   },
-  //   {
-  //     action: "submit",
-  //     type: "button",
-  //     label: "Save",
-  //   },
-  //   {
-  //     action: "cancel",
-  //     type: "button",
-  //     label: "Cancel"
-  //   }
-  // ];
-
-  submit(value: any){
+  // submit(value: any){
     
+  // }
+
+  submit(userForm: any) {
+    console.log(userForm);
+    let user = userForm.user;
+    let userRoles = userForm.roles;
+
+    let ctrl = this;
+    this.userDAO.updateUser(user, userRoles).subscribe(
+      result => {
+        ctrl.router.navigate(['portal/admin/users'])
+      },
+      error => {
+        console.error(error);
+      }
+    );
   }
 }
 

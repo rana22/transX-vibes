@@ -11,6 +11,8 @@ import IPermissionService = require("./IPermissionService");
 import PermissionService = require("./PermissionService");
 import IAuthService = require("./IAuthService");
 import AuthService = require("./AuthService");
+import IRoleService = require("./IRoleService");
+import RoleService = require("./RoleService");
 
 class ServiceModule {
     static get config () {
@@ -19,6 +21,7 @@ class ServiceModule {
             bind<IUserService>(TYPES.IUserService).to(UserService).inSingletonScope();
             bind<IPermissionService>(TYPES.IPermissionService).to(PermissionService).inSingletonScope();
             bind<IAuthService>(TYPES.IAuthService).to(AuthService).inSingletonScope();
+            bind<IRoleService>(TYPES.IRoleService).to(RoleService).inSingletonScope();
         })
     }
 }

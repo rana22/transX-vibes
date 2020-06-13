@@ -1,6 +1,6 @@
-import { BelongsToMany, Column, CreatedAt, Model, Scopes, Table, UpdatedAt, PrimaryKey, AutoIncrement, AllowNull, DataType } from 'sequelize-typescript';
 import { Role } from './Role';
 import { injectable } from 'inversify';
+import { Model, Table, PrimaryKey, AutoIncrement, Column, DataType } from 'sequelize-typescript';
 
 @Table({
     tableName: 'users'

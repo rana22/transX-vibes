@@ -1,4 +1,4 @@
-import { Table, Model, Column, AutoIncrement, PrimaryKey, DataType } from "sequelize-typescript";
+import { Table, Model, Column, AutoIncrement, PrimaryKey, DataType } from 'sequelize-typescript';
 
 
 @Table
