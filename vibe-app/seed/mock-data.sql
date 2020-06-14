@@ -2,6 +2,9 @@ INSERT INTO users (id, username, password, email, firstName, lastName, status) V
 (1, 'groot', '473c0812623754d187d1e4c96af5d5cb', 'iam@groot.com', 'Groot', 'Iam', 'active'),
 (2, 'user', '5f4dcc3b5aa765d61d8327deb882cf99', 'user@test.com', 'Test', 'User', 'active');
 
+INSERT INTO user_roles (userId, roleId, created, updated) VALUES
+( 1, 1,now(), now()),
+(2, 2,now(), now());
 
 INSERT INTO permissions (id, url, path, method, title, description) VALUES
 
@@ -51,7 +54,7 @@ INSERT INTO role_permissions (roleId, permissionId,created, updated) VALUES
 (2, 10, now(), now()),
 (2, 11, now(), now()),
 ( 2, 14, now(), now()),
-(2, 15, ),
+(2, 15, now(), now()),
 
 (3, 5, now(), now());
 
@@ -63,9 +66,7 @@ INSERT INTO roles (id, type, adminAccess) VALUES
 (2, 'Authenticated', 0),
 (3, 'Anonymous', 0);
 
-INSERT INTO user_roles (createdAt, updatedAt, userId, roleId) VALUES
-(now(), now(), 1, 1),
-(now(), now(), 2, 2);
+
 
 CREATE TABLE roles(
    id serial PRIMARY KEY,

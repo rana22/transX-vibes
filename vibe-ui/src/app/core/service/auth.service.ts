@@ -89,20 +89,16 @@ export class AuthService {
       let url = this.apiHelper.getServiceName() + ConstantMan.API.RESOURCE.SESSION;
       let method = "GET";
       var header: HttpHeaders = this.apiHelper.getDefaultHeader();
-      console.log(url);
-      console.log(header);
       let data = {};
       let user =  this.userDAO.getCurrentUser();
       let id = user.id;
       let params = new HttpParams();
-      params.append('id', id.toString());
       var authSvc = this;
 
       var httpRequest = this.apiHelper.apiCall(url,method, params, data, header, null);
       var observable = Observable.create(function subscribe(observer) {
         httpRequest.subscribe(
           data => {
-            console.log("session");
             observer.next(data);
             authSvc.userDAO.setCurrentUser(data as User);
             observer.complete();

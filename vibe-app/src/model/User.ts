@@ -1,6 +1,6 @@
 import { Role } from './Role';
 import { injectable } from 'inversify';
-import { Model, Table, PrimaryKey, AutoIncrement, Column, DataType } from 'sequelize-typescript';
+import { Model, Table, PrimaryKey, AutoIncrement, Column, DataType, HasMany } from 'sequelize-typescript';
 
 @Table({
     tableName: 'users'
@@ -51,7 +51,6 @@ export class User extends Model<User>{
     })
     status?: string;
 
-    // roles?: Role[];
     @Column({ 
         type: DataType.STRING, 
         allowNull: true 

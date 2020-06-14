@@ -23,7 +23,7 @@ class AuthUtil {
         console.log("from init AuthUtil 1");
         Passport.use(new Bearer.Strategy((token, done) => {
             console.log("from init AuthUtil 4");
-            this._authService.findOne({
+            Token.findOne({
                 where: {
                     token: token
                 }
