@@ -23,7 +23,7 @@ class AuthUtil {
         console.log("from init AuthUtil 1");
         Passport.use(new Bearer.Strategy((token, done) => {
             console.log("from init AuthUtil 4");
-            this._authService.findOne({
+            Token.findOne({
                 where: {
                     token: token
                 }
@@ -53,8 +53,10 @@ class AuthUtil {
                         .then((token) => {
                             console.log("check for the auth 2");
                             if (token) {
+                                console.log("existing token");
                                 done(null, token.token, null, { user: user });
                             } else {
+                                console.log("create token")
                                 Token.create({ userId: user.id, token: uuidV4()})
                                     .then((result) => {
                                         if (result) {
@@ -65,6 +67,7 @@ class AuthUtil {
                         })
                 })
                 .catch((error) => {
+                    console.log("no token");
                     done(error);
                 });
         }));

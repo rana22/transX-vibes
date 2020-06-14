@@ -163,7 +163,6 @@ export abstract class BaseDAO implements IBaseDAO {
   }
 
   //update
-
   private updateEntityCall(entity: Entity, resource: string): Observable<Response> {
     var url: string = this.apiHelper.getServiceName() + resource + "/" + (entity['id'] as any as string);
     var method: string = 'PUT';

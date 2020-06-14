@@ -1,4 +1,4 @@
-import {injectable,inject} from "inversify";
+import { injectable, inject } from "inversify";
 import Http = require("passport-http");
 import IAuthService = require("../service/IAuthService");
 import IUserService = require("../service/IUserService");
@@ -15,7 +15,7 @@ class PermissionUtil {
 
     }
 
-    checkUserPermission(url, path, method, user): Promise<boolean>{
+    checkUserPermission(url,path,method, user): Promise<boolean>{
         let hasPermission = false;
         let roleIdArray = user.get().roles.map(function (role) {
             return role.id;
@@ -29,7 +29,6 @@ class PermissionUtil {
             });
         });
     }
-
 }
 
 Object.seal(PermissionUtil);

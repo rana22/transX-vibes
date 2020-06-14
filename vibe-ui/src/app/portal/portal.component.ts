@@ -14,7 +14,6 @@ export class PortalComponent implements OnInit {
     private userDAO: UserDAO
   ) {
     let currentUser = this.userDAO.getCurrentUser();
-    console.log(currentUser);
     for (let role of currentUser.roles) {
       if (role.adminAccess) {
         this.canAccessAdmin = true;

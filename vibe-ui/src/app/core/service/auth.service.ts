@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient,  HttpHeaders} from '@angular/common/http';
+import { HttpClient,  HttpHeaders, HttpParams} from '@angular/common/http';
 import 'rxjs/add/operator/toPromise';
 import {ConstantMan} from "./constantMan";
 import {Observable, Subject} from "rxjs";
@@ -21,7 +21,7 @@ export class AuthService {
     }
 
     login(username: string, password: string): Observable<any> {
-      let url = this.apiHelper.getServiceName()+ "auth/" + ConstantMan.API.RESOURCE.LOGIN;
+      let url = this.apiHelper.getServiceName() + ConstantMan.API.RESOURCE.LOGIN;
       let method = "POST";
       var header: HttpHeaders = this.apiHelper.getDefaultHeader();
 
@@ -89,12 +89,13 @@ export class AuthService {
       let url = this.apiHelper.getServiceName() + ConstantMan.API.RESOURCE.SESSION;
       let method = "GET";
       var header: HttpHeaders = this.apiHelper.getDefaultHeader();
-
       let data = {};
-
+      let user =  this.userDAO.getCurrentUser();
+      let id = user.id;
+      let params = new HttpParams();
       var authSvc = this;
 
-      var httpRequest = this.apiHelper.apiCall(url,method, null, data,header,null);
+      var httpRequest = this.apiHelper.apiCall(url,method, params, data, header, null);
       var observable = Observable.create(function subscribe(observer) {
         httpRequest.subscribe(
           data => {
@@ -104,6 +105,7 @@ export class AuthService {
             authSvc.loggedInSource.next(true);
           },
           error => {
+            console.log("error !!");
             authSvc.apiHelper.setAccessToken(null);
             authSvc.apiHelper.removeAccessToken();
             authSvc.loggedInSource.next(false);
