@@ -21,39 +21,39 @@ INSERT INTO permissions (id, url, path, method, title, description) VALUES
 (14, '/samples', '/', 'GET', 'Get Samples', 'Get all samples'),
 (15, '/samples', '/:id', 'GET',  'Get Specific Sample', 'Get a specific sample by id'),
 (16, '/samples', '/', 'POST', 'Create Sample', 'Create a new sample'),
-(17, '/samples', '/:id', 'PUT', 'Update Sample', 'Update a specific sample by id')
+(17, '/samples', '/:id', 'PUT', 'Update Sample', 'Update a specific sample by id');
 
-INSERT INTO role_permissions (roleId, permissionId) VALUES
+INSERT INTO role_permissions (roleId, permissionId,created, updated) VALUES
 
-(1, 1),
-(1, 2),
-(1, 3),
-(1, 4),
-(1, 5),
-( 1, 6),
-(1, 7),
-(1, 8),
-(1, 9),
-(1, 10),
-(1, 11),
-(1, 12),
-(1, 13),
-(1, 14),
-(1, 15),
-(1, 16),
-( 1, 17),
+(1, 1, now(), now()),
+(1, 2, now(), now()),
+(1, 3, now(), now()),
+(1, 4, now(), now()),
+(1, 5, now(), now()),
+( 1, 6, now(), now()),
+(1, 7, now(), now()),
+(1, 8, now(), now()),
+(1, 9, now(), now()),
+(1, 10, now(), now()),
+(1, 11, now(), now()),
+(1, 12, now(), now()),
+(1, 13, now(), now()),
+(1, 14, now(), now()),
+(1, 15, now(), now()),
+(1, 16, now(), now()),
+( 1, 17,now(), now()),
 
-(2, 1),
-(2, 2),
-( 2, 4),
-( 2, 6),
-(2, 7),
-(2, 10),
-(2, 11),
-( 2, 14),
-(2, 15),
+(2, 1, now(), now()),
+(2, 2, now(), now()),
+( 2, 4, now(), now()),
+( 2, 6, now(), now()),
+(2, 7,now(), now()),
+(2, 10, now(), now()),
+(2, 11, now(), now()),
+( 2, 14, now(), now()),
+(2, 15, ),
 
-(3, 5);
+(3, 5, now(), now());
 
 
 delete from roles;
@@ -61,10 +61,11 @@ INSERT INTO roles (id, type, adminAccess) VALUES
 
 (1, 'Admin', 1),
 (2, 'Authenticated', 0),
-(3, 'Anonymous', 0)
+(3, 'Anonymous', 0);
 
-;
-
+INSERT INTO user_roles (createdAt, updatedAt, userId, roleId) VALUES
+(now(), now(), 1, 1),
+(now(), now(), 2, 2);
 
 CREATE TABLE roles(
    id serial PRIMARY KEY,

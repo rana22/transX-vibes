@@ -18,7 +18,7 @@ export class HttpService {
 
 
   login(user): Observable<HttpResponse<any>>{
-    let url = 'http://localhost:3000/app/v1/auth/login';
+    let url = 'http://localhost:3000/app/v1/login';
     // let pass = this.encrpyt.set('123456$#@$^@1ERF', user.password);
     let header: HttpHeaders = this.apiHelper.getDefaultHeader();
 

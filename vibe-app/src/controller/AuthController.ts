@@ -7,7 +7,7 @@ import TYPES from "../config/properties/Types";
 import AuthService = require("../service/AuthService");
 
 export function AuthControllerFactory(container: Container){
-    @controller('/auth')
+    @controller('')
     class AuthController {
             private _service: IAuthService;
     
@@ -22,13 +22,19 @@ export function AuthControllerFactory(container: Container){
     
             @httpPost('/logout', container.get<e.RequestHandler>('Authenticate'))
             public logout(req: e.Request, res: e.Response): any {
-                console.log("test check logout !!!");
-                return "logout"
+                //console.log(req.user);
+                req.user.getToken().then((token) => {
+                    token.destroy().then(() => {
+                        res.send();
+                    });
+                });
             }
     
-            @httpGet('/session')
+            @httpGet('/session', container.get<e.RequestHandler>('Authenticate'))
             public session(req: e.Request, res: e.Response): any {
-                return "";
+                console.log("node get session");
+                console.log(req.user);
+                return req.user;
             }
     }
 

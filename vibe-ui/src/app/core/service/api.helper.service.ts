@@ -72,11 +72,10 @@ export class ApiHelper {
   }
 
   public getDefaultHeader(): HttpHeaders {
-    let headers: HttpHeaders = new HttpHeaders({ 'Content-Type': 'application/json' });
+    let headers: HttpHeaders = new HttpHeaders({ 'Content-Type': 'application/json' , 'Authorization': 'Bearer ' + this.getAccessToken() });
     if (!this.getAccessToken()) {
-      return headers;
+      return new HttpHeaders({ 'Content-Type': 'application/json' });
     }
-    headers.set('Authorization', 'Bearer ' + this.getAccessToken());
     return headers;
   }
 
@@ -97,13 +96,18 @@ export class ApiHelper {
     let reqOptions = { body: data, headers: headers, params: params};
     let observable = Observable.create(function subscribe(observer) {
     let httpRequest = that.http.request(method, url, reqOptions);
+    console.log(url);
       httpRequest.subscribe(
         data => {
+          console.log(data)
           let body = {};
           try {
+            console.log(url);
+            console.log(data);
             body = data;
           }
           catch (e) {
+            console.log("data")
             console.log(e);
           }
 
@@ -111,6 +115,7 @@ export class ApiHelper {
           observer.complete();
         },
         error => {
+          console.log("data err session")
           that.handleApiError(error);
           observer.error(error);
         });
