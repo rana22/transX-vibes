@@ -17,7 +17,7 @@ class PersonService implements IPersonService {
         });
     }
 
-    public retrieve(): Promise<any>{
+    public retrieve(item: Person): Promise<any>{
         return new Promise<Person>((resolve, reject) => {
 
         });

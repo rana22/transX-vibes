@@ -8,6 +8,7 @@ const TYPES = {
     IPermissionService: Symbol('IPermissionService'),
     IFileService: Symbol('IFileService'),
     IRoleService: Symbol('IRoleService'),
+    IUserRoleService: Symbol('IUserRoleService'),
 	IITestResultControllerService: Symbol('IITestResultControllerService'),
 	IITestResultService: Symbol('IITestResultService'),
 	ITestResultService: Symbol('ITestResultService'),

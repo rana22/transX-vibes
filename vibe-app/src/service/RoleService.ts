@@ -2,6 +2,7 @@ import IRoleService = require("./IRoleService");
 import {injectable,inject} from "inversify";
 import md5 = require("md5");
 import { Role } from "../model/Role";
+import { User } from "../model/User";
 var request = require('request-promise');
 
 @injectable()
@@ -37,7 +38,7 @@ class RoleService implements IRoleService {
         });
     }
 
-    retrieve() {
+    retrieve(user) {
         return new Promise<Role[]>((resolve, reject) => {
             Role.findAll().then((results) => {
                     resolve(results);

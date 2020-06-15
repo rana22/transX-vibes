@@ -67,7 +67,6 @@ class AuthUtil {
                         })
                 })
                 .catch((error) => {
-                    console.log("no token");
                     done(error);
                 });
         }));

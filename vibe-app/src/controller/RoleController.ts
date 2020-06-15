@@ -25,7 +25,7 @@ export function RoleControllerFactory(container: Container) {
 
         @httpGet('/', container.get<e.RequestHandler>('Authenticate'), container.get<e.RequestHandler>('Permissions'))
         public retrieve(req: e.Request, res: e.Response): Promise<Role[]> {
-            return this._service.retrieve();
+            return this._service.retrieve(req.user);
         }
 
         @httpGet('/:id', container.get<e.RequestHandler>('Authenticate'), container.get<e.RequestHandler>('Permissions'))
