@@ -28,9 +28,9 @@ INSERT INTO permissions (id, url, path, method, title, description) VALUES
 
 INSERT INTO role_permissions (roleId, permissionId,created, updated) VALUES
 
-(1, 1, now(), now()),
-(1, 2, now(), now()),
-(1, 3, now(), now()),
+--(1, 1, now(), now()),
+--(1, 2, now(), now()),
+--(1, 3, now(), now()),
 (1, 4, now(), now()),
 (1, 5, now(), now()),
 ( 1, 6, now(), now()),
@@ -41,10 +41,10 @@ INSERT INTO role_permissions (roleId, permissionId,created, updated) VALUES
 (1, 11, now(), now()),
 (1, 12, now(), now()),
 (1, 13, now(), now()),
-(1, 14, now(), now()),
-(1, 15, now(), now()),
-(1, 16, now(), now()),
-( 1, 17,now(), now()),
+--(1, 14, now(), now()),
+--(1, 15, now(), now()),
+--(1, 16, now(), now()),
+--( 1, 17,now(), now()),
 
 (2, 1, now(), now()),
 (2, 2, now(), now()),
@@ -59,7 +59,6 @@ INSERT INTO role_permissions (roleId, permissionId,created, updated) VALUES
 (3, 5, now(), now());
 
 
-delete from roles;
 INSERT INTO roles (id, type, adminAccess) VALUES
 
 (1, 'Admin', 1),
@@ -68,8 +67,8 @@ INSERT INTO roles (id, type, adminAccess) VALUES
 
 
 
-CREATE TABLE roles(
-   id serial PRIMARY KEY,
-   type VARCHAR (50) UNIQUE NOT NULL,
-   adminAccess integer
-);
+--CREATE TABLE roles(
+--   id serial PRIMARY KEY,
+--   type VARCHAR (50) UNIQUE NOT NULL,
+--   adminAccess integer
+--);

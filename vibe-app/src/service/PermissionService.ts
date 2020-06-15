@@ -2,9 +2,11 @@ import IPermissionService = require("./IPermissionService");
 import { injectable } from "inversify";
 import { Permissions } from "../model/Permissions";
 import { User } from "../model/User";
+import { RolePermissions } from "../model/RolePermissions";
+import { UserRoles } from "../model/UserRoles";
 
 @injectable()
-class PermissionService implements IPermissionService{
+class PermissionService implements IPermissionService {
 
     create(item: Permissions) {
         return new Promise<Permissions>((resolve, reject) => {
@@ -25,18 +27,7 @@ class PermissionService implements IPermissionService{
                     id: id
                 }
             })
-            .then((results: any) => {
-                resolve(results);
-            })
-            .catch((error) => {
-                reject(error);
-            });
-        });
-    }
-
-    retrieve(user) {
-        return new Promise<Permissions[]>((resolve, reject) => {
-            Permissions.findAll({where:{}}).then((results) => {
+                .then((results: any) => {
                     resolve(results);
                 })
                 .catch((error) => {
@@ -45,22 +36,51 @@ class PermissionService implements IPermissionService{
         });
     }
 
-    delete(id: number): Promise<any>{
+    retrieve(user) {
+        return new Promise<Permissions[]>((resolve, reject) => {
+            UserRoles.findAll({ where: { userid: user.id } })
+                .then((result) => {
+                    let roleIds = [];
+                    result.forEach(c => {
+                        roleIds.push(c.roleid);
+                    })
+                    RolePermissions.findAll({
+                        where: { roleid: roleIds }
+                    }
+                    ).then(
+                        res => {
+                            let permissionids = [];
+                            res.forEach(c => {
+                                permissionids.push(c.permissionid);
+                            })
+                            Permissions.findAll({ where: { id: permissionids } }).then((results) => {
+                                resolve(results);
+                            })
+                                .catch((error) => {
+                                    reject(error);
+                                });
+                        }
+                    )
+                });
+        });
+    }
+
+    delete(id: number): Promise<any> {
         return new Promise<Permissions>((resolve, reject) => {
-            Permissions.destroy({where: {id: id}})
+            Permissions.destroy({ where: { id: id } })
                 .then((results: any) => {
                     resolve(results || <Permissions>{});
                 })
                 .catch((error) => {
                     reject(error);
-            });
+                });
         });
     }
 
 
     findById(id: number) {
         return new Promise<Permissions>((resolve, reject) => {
-            Permissions.findOne({where: {id: id}})
+            Permissions.findOne({ where: { id: id } })
                 .then((results) => {
                     resolve(results || <Permissions>{});
                 })
@@ -70,13 +90,13 @@ class PermissionService implements IPermissionService{
         });
     }
 
-    findOne(options: Object): Promise<Permissions>{
+    findOne(options: Object): Promise<Permissions> {
         return new Promise<Permissions>((resolve, reject) => {
 
         });
     }
 
-    getDistinctPermissionsByRole(_roleIdsArray: number[]): Promise<Permissions[]>{
+    getDistinctPermissionsByRole(_roleIdsArray: number[]): Promise<Permissions[]> {
         return new Promise<Permissions[]>((resolve, reject) => {
             let distinctHierarchy: Object[] = [
                 {
@@ -90,17 +110,17 @@ class PermissionService implements IPermissionService{
                 }
             ];
             Permissions.findAll({
-                    include: distinctHierarchy
-                }).then((results) => {
-                if(results) {
+                include: distinctHierarchy
+            }).then((results) => {
+                if (results) {
                     resolve(results);
-                }else {
+                } else {
                     reject();
                 }
             })
-            .catch((error) => {
-                reject(error);
-            });
+                .catch((error) => {
+                    reject(error);
+                });
         });
     };
 }
