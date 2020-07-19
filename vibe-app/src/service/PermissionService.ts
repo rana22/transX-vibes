@@ -1,13 +1,16 @@
 import IPermissionService = require("./IPermissionService");
 import { injectable } from "inversify";
-import { Permission } from "../model/Permission";
+import { Permissions } from "../model/Permissions";
+import { User } from "../model/User";
+import { RolePermissions } from "../model/RolePermissions";
+import { UserRoles } from "../model/UserRoles";
 
 @injectable()
-class PermissionService implements IPermissionService{
+class PermissionService implements IPermissionService {
 
-    create(item: Permission) {
-        return new Promise<Permission>((resolve, reject) => {
-            Permission.create(item)
+    create(item: Permissions) {
+        return new Promise<Permissions>((resolve, reject) => {
+            Permissions.create(item)
                 .then((results) => {
                     resolve(results);
                 })
@@ -17,25 +20,14 @@ class PermissionService implements IPermissionService{
         });
     }
 
-    update(id: number, item: Permission) {
-        return new Promise<Permission>((resolve, reject) => {
-            Permission.update(item, {
+    update(id: number, item: Permissions) {
+        return new Promise<Permissions>((resolve, reject) => {
+            Permissions.update(item, {
                 where: {
                     id: id
                 }
             })
-            .then((results: any) => {
-                resolve(results);
-            })
-            .catch((error) => {
-                reject(error);
-            });
-        });
-    }
-
-    retrieve() {
-        return new Promise<Permission[]>((resolve, reject) => {
-            Permission.findAll().then((results) => {
+                .then((results: any) => {
                     resolve(results);
                 })
                 .catch((error) => {
@@ -44,24 +36,53 @@ class PermissionService implements IPermissionService{
         });
     }
 
-    delete(id: number): Promise<any>{
-        return new Promise<Permission>((resolve, reject) => {
-            Permission.destroy({where: {id: id}})
+    retrieve(user) {
+        return new Promise<Permissions[]>((resolve, reject) => {
+            UserRoles.findAll({ where: { userid: user.id } })
+                .then((result) => {
+                    let roleIds = [];
+                    result.forEach(c => {
+                        roleIds.push(c.roleid);
+                    })
+                    RolePermissions.findAll({
+                        where: { roleid: roleIds }
+                    }
+                    ).then(
+                        res => {
+                            let permissionids = [];
+                            res.forEach(c => {
+                                permissionids.push(c.permissionid);
+                            })
+                            Permissions.findAll({ where: { id: permissionids } }).then((results) => {
+                                resolve(results);
+                            })
+                                .catch((error) => {
+                                    reject(error);
+                                });
+                        }
+                    )
+                });
+        });
+    }
+
+    delete(id: number): Promise<any> {
+        return new Promise<Permissions>((resolve, reject) => {
+            Permissions.destroy({ where: { id: id } })
                 .then((results: any) => {
-                    resolve(results || <Permission>{});
+                    resolve(results || <Permissions>{});
                 })
                 .catch((error) => {
                     reject(error);
-            });
+                });
         });
     }
 
 
     findById(id: number) {
-        return new Promise<Permission>((resolve, reject) => {
-            Permission.findOne({where: {id: id}})
+        return new Promise<Permissions>((resolve, reject) => {
+            Permissions.findOne({ where: { id: id } })
                 .then((results) => {
-                    resolve(results || <Permission>{});
+                    resolve(results || <Permissions>{});
                 })
                 .catch((error) => {
                     reject(error);
@@ -69,17 +90,17 @@ class PermissionService implements IPermissionService{
         });
     }
 
-    findOne(options: Object): Promise<Permission>{
-        return new Promise<Permission>((resolve, reject) => {
+    findOne(options: Object): Promise<Permissions> {
+        return new Promise<Permissions>((resolve, reject) => {
 
         });
     }
 
-    getDistinctPermissionsByRole(_roleIdsArray: number[]): Promise<Permission[]>{
-        return new Promise<Permission[]>((resolve, reject) => {
+    getDistinctPermissionsByRole(_roleIdsArray: number[]): Promise<Permissions[]> {
+        return new Promise<Permissions[]>((resolve, reject) => {
             let distinctHierarchy: Object[] = [
                 {
-                    model: Permission,
+                    model: Permissions,
                     as: "roles",
                     where: {
                         id: {
@@ -88,18 +109,18 @@ class PermissionService implements IPermissionService{
                     }
                 }
             ];
-            Permission.findAll({
-                    include: distinctHierarchy
-                }).then((results) => {
-                if(results) {
+            Permissions.findAll({
+                include: distinctHierarchy
+            }).then((results) => {
+                if (results) {
                     resolve(results);
-                }else {
+                } else {
                     reject();
                 }
             })
-            .catch((error) => {
-                reject(error);
-            });
+                .catch((error) => {
+                    reject(error);
+                });
         });
     };
 }

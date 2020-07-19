@@ -4,7 +4,7 @@ import {injectable, inject} from "inversify";
 import { Container } from 'inversify';
 import IPermissionService = require("../service/IPermissionService");
 import TYPES from "../config/properties/Types";
-import { Permission } from "../model/Permission";
+import { Permissions } from "../model/Permissions";
 import IPermissionController = require("./IPermissionController");
 
 export function PermissionControllerFactory(container : Container) {
@@ -19,17 +19,17 @@ export function PermissionControllerFactory(container : Container) {
         }
 
         @httpPost('/', container.get<e.RequestHandler>('Authenticate'), container.get<e.RequestHandler>('Permissions'))
-        public create(req: e.Request, res: e.Response): Promise<Permission> {
+        public create(req: e.Request, res: e.Response): Promise<Permissions> {
             return this._service.create(req.body);
         }
 
         @httpGet('/', container.get<e.RequestHandler>('Authenticate'), container.get<e.RequestHandler>('Permissions'))
-        public retrieve(req: e.Request, res: e.Response): Promise<Permission[]> {
-            return this._service.retrieve();
+        public retrieve(req: e.Request, res: e.Response): Promise<Permissions[]> {
+            return this._service.retrieve(req.user);
         }
 
         @httpGet('/:id', container.get<e.RequestHandler>('Authenticate'), container.get<e.RequestHandler>('Permissions'))
-        public findById(req: e.Request, res: e.Response): Promise<Permission> {
+        public findById(req: e.Request, res: e.Response): Promise<Permissions> {
             return this._service.findById(Number(req.params.id));
         }
 

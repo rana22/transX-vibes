@@ -1,10 +1,10 @@
 import ICreateController = require("./base/ICreateController");
 import IUpdateController = require("./base/IUpdateController");
 import IDeleteController = require("./base/IDeleteController");
-import { Permission } from "../model/Permission";
+import { Permissions } from "../model/Permissions";
 import IReadController = require("./base/IReadController");
 
-interface IPermissionController extends ICreateController<Permission>, IReadController<Permission>, IUpdateController {
+interface IPermissionController extends ICreateController<Permissions>, IReadController<Permissions>, IUpdateController {
     //put new methods here
 }
 

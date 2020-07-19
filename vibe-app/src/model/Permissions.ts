@@ -1,8 +1,10 @@
 import { Table, Model, Column, AutoIncrement, PrimaryKey, DataType } from 'sequelize-typescript';
 
 
-@Table
-export class Permission extends Model<Permission> {
+@Table({
+    tableName: 'permissions'
+})
+export class Permissions extends Model<Permissions> {
 
     @PrimaryKey
     @AutoIncrement
@@ -41,5 +43,17 @@ export class Permission extends Model<Permission> {
         allowNull: true 
     })
     description: string;
+
+    @Column({ 
+        type: DataType.DATE, 
+        allowNull: true 
+    })
+    createdAt?: string;
+
+    @Column({ 
+        type: DataType.DATE, 
+        allowNull: true 
+    })
+    updatedAt?: string;
     
 }

@@ -22,7 +22,6 @@ export function AuthControllerFactory(container: Container){
     
             @httpPost('/logout', container.get<e.RequestHandler>('Authenticate'))
             public logout(req: e.Request, res: e.Response): any {
-                //console.log(req.user);
                 req.user.getToken().then((token) => {
                     token.destroy().then(() => {
                         res.send();
@@ -32,8 +31,6 @@ export function AuthControllerFactory(container: Container){
     
             @httpGet('/session', container.get<e.RequestHandler>('Authenticate'))
             public session(req: e.Request, res: e.Response): any {
-                console.log("node get session");
-                console.log(req.user);
                 return req.user;
             }
     }

@@ -33,7 +33,7 @@ class AuthService implements IAuthService {
         });
     }
 
-    retrieve() {
+    retrieve(item: Token) {
         return new Promise<Token[]>((resolve, reject) => {
             Token.findAll().then((results) => {
                     resolve(results);

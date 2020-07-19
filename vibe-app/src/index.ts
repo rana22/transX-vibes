@@ -20,7 +20,7 @@ container.bind<express.RequestHandler>('Permissions').toConstantValue((req: expr
     permission.checkUserPermission(req.baseUrl,req.route.path,req.method, req.user).then(function (accessResult) {
         if(!accessResult) {
             res.statusCode = 403;
-            return res.end('Forbidden 123');
+            return res.end('Forbidden');
         }
         return next();
     });
